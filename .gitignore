@@ -39,3 +39,6 @@ tramp
 Thumbs.db
 Desktop.ini
 
+# Coverage tests
+.coverage
+htmlcov/
