@@ -42,3 +42,6 @@ Desktop.ini
 # Coverage tests
 .coverage
 htmlcov/
+
+# Fixtures (contain user info)
+users.json
