@@ -43,5 +43,5 @@ Desktop.ini
 .coverage
 htmlcov/
 
-# Fixtures (contain user info)
+# Fixtures (containing user info)
 users.json

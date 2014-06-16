@@ -3,6 +3,7 @@ import os
 from django.test import LiveServerTestCase
 from django.test.client import Client
 from django.utils import timezone
+from django.contrib import auth
 
 from blog.models import Post
 
@@ -31,7 +32,7 @@ class AdminTest(LiveServerTestCase):
         response = self.client.get('/admin/')
         self.assertEqual(response.status_code, 200)
         # After logging in, page should contain 'Log out' string
-        self.assertTrue(bytes('Log out', 'UTF-8') in response.content)
+        self.assertTrue(bytes('administration', 'UTF-8') in response.content)
 
     def test_logout(self):
         # Log in
@@ -73,8 +74,8 @@ class AdminTest(LiveServerTestCase):
         self.assertEqual(response.status_code, 200)
 
         # Check post was added successfully
-        self.assertTrue(bytes('added successfully',
-                              'UTF-8') in response.content)
+        self.assertTrue(
+            bytes('added successfully', 'UTF-8') in response.content)
 
         # Check new post is in database
         all_posts = Post.objects.all()
@@ -87,14 +88,6 @@ class AdminTest(LiveServerTestCase):
         post.text = 'This is my first blog post'
         post.pub_date = timezone.now()
         post.save()
-        ### Unnecessary
-        # Check new post is in database
-        all_posts = Post.objects.all()
-        self.assertEqual(len(all_posts), 1)
-        only_post = all_posts[0]
-        self.assertEqual(only_post.title, 'My first post')
-        self.assertEqual(only_post.text, 'This is my first blog post')
-        ####
 
         # Log in
         self.client.login(username=os.environ['TESTUSER'],
@@ -106,24 +99,23 @@ class AdminTest(LiveServerTestCase):
         # After logging in, page should contain 'Log out' string
         self.assertTrue(bytes('Log out', 'UTF-8') in response.content)
 
-        # Check response code
-        response = self.client.get('/admin/blog/post/1/')
-        self.assertEqual(response.status_code, 200)
-        ####
-
         # Edit the post
-        response = self.client.post('/admin/blog/post/1/', {
-            'title': 'My second post',
-            'text': 'This is my second post',
-            'pub_date_0': '2013-12-28',
-            'pub_date_1': '22:00:04'
+        # Change url if url format changes!!
+        response = self.client.post(
+            '/admin/blog/post/' + str(post.id) + '/',
+            {
+                'title': 'My second post',
+                'text': 'This is my second post',
+                'pub_date_0': '2013-12-28',
+                'pub_date_1': '22:00:04'
             },
             follow=True
             )
         self.assertEqual(response.status_code, 200)
 
         # Check post was added successfully
-        self.assertTrue(bytes('changed successfully', 'UTF-8') in response.content)
+        self.assertTrue(
+            bytes('changed successfully', 'UTF-8') in response.content)
 
         # Check new post is in database
         all_posts = Post.objects.all()
@@ -148,16 +140,17 @@ class AdminTest(LiveServerTestCase):
                           password=os.environ['TESTUSERPASSWD'])
 
         # Delete the post
-        response = self.client.post('/admin/blog/post/1/delete/', {
-            'post': 'yes'
-            },
+        # Change url if url format changes!!
+        response = self.client.post(
+            '/admin/blog/post/' + str(post.id) + '/delete/',
+            {'post': 'yes'},
+            follow=True
             )
         self.assertEqual(response.status_code, 200)
-        # Check are you sure is in loaded content
-        self.assertTrue(bytes('you sure?', 'UTF-8') in response.content)
 
         # Check deleted successfully
-        self.assertTrue(bytes('deleted successfully') in response.content)
+        self.assertTrue(
+            bytes('deleted successfully', 'UTF-8') in response.content)
 
         # Check removed from database
         all_posts = Post.objects.all()
