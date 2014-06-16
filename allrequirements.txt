@@ -1,0 +1,17 @@
+Django==1.6.2
+Jinja2==2.7.3
+MarkupSafe==0.23
+Pygments==1.6
+South==0.8.2
+Sphinx==1.2.1
+bpython==0.12
+coverage==3.6
+django-braces==1.2.2
+django-debug-toolbar==1.0.1
+django-discover-runner==0.4
+django-model-utils==1.5.0
+docutils==0.11
+logutils==0.3.3
+psycopg2==2.4.6
+six==1.7.2
+sqlparse==0.1.11
