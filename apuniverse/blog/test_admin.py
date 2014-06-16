@@ -1,9 +1,7 @@
 import os
 
-from django.test import LiveServerTestCase
-from django.test.client import Client
+from django.test import LiveServerTestCase, Client
 from django.utils import timezone
-from django.contrib import auth
 
 from blog.models import Post
 
@@ -32,7 +30,7 @@ class AdminTest(LiveServerTestCase):
         response = self.client.get('/admin/')
         self.assertEqual(response.status_code, 200)
         # After logging in, page should contain 'Log out' string
-        self.assertTrue(bytes('administration', 'UTF-8') in response.content)
+        self.assertTrue(bytes('Log out', 'UTF-8') in response.content)
 
     def test_logout(self):
         # Log in
