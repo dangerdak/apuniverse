@@ -20,14 +20,16 @@ class PostViewTest(LiveServerTestCase):
         self.assertEqual(len(all_posts), 1)
 
         # Fetch the index
-        response = self.client.get('/')
+        response = self.client.get('/blog/')
         self.assertEqual(response.status_code, 200)
 
         # Check response contains correct info
         self.assertTrue(bytes(post.title, 'UTF-8') in response.content)
         self.assertTrue(bytes(post.text, 'UTF-8') in response.content)
 
-        self.assertTrue(bytes(post.pub_date.year, 'UTF-8') in response.content)
-        self.assertTrue(bytes(post.pub_date.strftime('%b'), 'UTF-8') in response.content)
-        self.assertTrue(bytes(post.pub_date.day, 'UTF-8') in response.content)
-
+        self.assertTrue(
+            bytes(str(post.pub_date.year), 'UTF-8') in response.content)
+        self.assertTrue(
+            bytes(post.pub_date.strftime('%b'), 'UTF-8') in response.content)
+        self.assertTrue(
+            bytes(str(post.pub_date.day), 'UTF-8') in response.content)
