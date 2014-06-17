@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # Blog urls
-    url(r'^.*', include('blog.urls')),
+    url(r'^blog/', include('blog.urls')),
 )
 
 # Uncomment the next line to serve media files in dev.

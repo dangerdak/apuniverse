@@ -9,7 +9,8 @@
 		<div class="post">
 			<h1>{{ post.title }}</h1>
 			{{ post.pub_date }}</br>
-			{{ post.text }}
+			{{ post.text|safe }}
 		</div>
 	{% endfor %}
+
 {% endblock content %}
