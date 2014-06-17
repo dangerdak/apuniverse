@@ -259,3 +259,12 @@ INSTALLED_APPS += (
 # Don't need to use South when setting up a test database.
 SOUTH_TESTS_MIGRATE = False
 ########## END SOUTH CONFIGURATION
+
+########## DJANGO WYSIWYG CONFIGURATION 
+INSTALLED_APPS += (
+        'django_wysiwyg',
+        'tinymce',
+        )
+
+DJANGO_WYSIWYG_FLAVOR = "tinymce"
+########## END DJANGO WYSIWYG CONFIGURATION 
