@@ -12,8 +12,9 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         # Hardcoded url in model!!
-        return "/blog/%s/%s/%s" % (self.pub_date.year,
-                                   self.pub_date.month,
+        date = (self.pub_date.strftime('%Y %b')).lower().split()
+        return "/blog/%s/%s/%s" % (date[0],
+                                   date[1],
                                    self.slug)
 
     class Meta:

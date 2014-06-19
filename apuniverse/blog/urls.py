@@ -10,7 +10,7 @@ urlpatterns = patterns('',
         name='blog',
         ),
     # Individual posts
-    url(r'^(?P<pub_year>\d{4})/(?P<pub_month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/$',
+    url(r'^(?P<pub_year>\d{4})/(?P<pub_month>\w{3})/(?P<slug>[a-zA-Z0-9-]+)/$',
         DetailView.as_view(model=Post,),
         ),
 )
