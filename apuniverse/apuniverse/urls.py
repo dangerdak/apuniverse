@@ -1,27 +1,56 @@
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.conf import settings
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+
+from blog.models import Post
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
+    # Homepage
+    url(r'^$',
+        TemplateView.as_view(template_name='home.html'),
+        name='home'),
 
-    # Examples:
-    # url(r'^$', 'apuniverse.views.home', name='home'),
-    # url(r'^apuniverse/', include('apuniverse.foo.urls')),
+    # What's new
+    url(r'^new/$',
+        TemplateView.as_view(template_name='new.html'),
+        name='new'),
+
+    # Blog
+    # App
+    url(r'^blog/$',
+        ListView.as_view(model=Post),
+        name='blog'),
+
+    # Galleries
+    # App
+    url(r'^galleries/$',
+        TemplateView.as_view(template_name='galleries.html'),
+        name='galleries'),
+
+    # About
+    url(r'^about/$',
+        TemplateView.as_view(template_name='about.html'),
+        name='about'),
+
+    # Contact
+    # Form
+    url(r'^contact/$',
+        TemplateView.as_view(template_name='contact.html'),
+        name='contact'),
+
+    # Admin
+    # App
+    url(r'^admin/',
+        include(admin.site.urls)),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
-
-    # Blog urls
-    url(r'^blog/', include('blog.urls')),
 )
 
 # Uncomment the next line to serve media files in dev.

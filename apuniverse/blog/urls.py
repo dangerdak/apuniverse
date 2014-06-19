@@ -4,7 +4,7 @@ from blog.models import Post
 
 urlpatterns = patterns('',
     # Index
-    url('^(?P<page>\d+)?/?$', ListView.as_view(
+    url('^$', ListView.as_view(
         model=Post,
         )),
 )
