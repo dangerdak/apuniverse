@@ -45,3 +45,6 @@ htmlcov/
 
 # Fixtures (containing user info)
 users.json
+
+# South migrations
+migrations/
