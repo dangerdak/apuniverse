@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Blog Entry{% endblock title %}
+
+{% block page_title %}{% endblock page_title %}
+
+{% block content %}
+	<div class='post-detail'>
+		<h1>{{ object.title }}</h1>
+		<p>Last modified: {{ object.modified_date }}</p>
+		{{ object.text|safe }}
+	</div>
+{% endblock content %}

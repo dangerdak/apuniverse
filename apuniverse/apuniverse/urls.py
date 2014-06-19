@@ -22,9 +22,9 @@ urlpatterns = patterns('',
 
     # Blog
     # App
-    url(r'^blog/$',
-        ListView.as_view(model=Post),
-        name='blog'),
+    url(r'^blog/',
+        include('blog.urls'),
+        ),
 
     # Galleries
     # App

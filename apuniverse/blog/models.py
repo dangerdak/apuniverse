@@ -1,10 +1,23 @@
+from django.utils import timezone
 from django.db import models
 
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    pub_date = models.DateTimeField()
     text = models.TextField()
+    slug = models.SlugField(max_length=40, unique=True)
+    pub_date = models.DateTimeField('Publishing date', default=timezone.now)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField('Last Modified', auto_now=True)
+
+    def get_absolute_url(self):
+        # Hardcoded url in model!!
+        return "/blog/%s/%s/%s" % (self.pub_date.year,
+                                   self.pub_date.month,
+                                   self.slug)
+
+    class Meta:
+        ordering = ['-pub_date']
 
     def __str__(self):
         return self.title

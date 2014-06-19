@@ -6,11 +6,13 @@
 
 {% block content %}
 	{% for post in object_list %}
+	<a href="{{ post.get_absolute_url }}">
 		<div class="post">
 			<h1>{{ post.title }}</h1>
 			{{ post.pub_date }}</br>
 			{{ post.text|safe }}
 		</div>
+	</a>
 	{% endfor %}
 
 {% endblock content %}
