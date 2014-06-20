@@ -39,9 +39,8 @@ urlpatterns = patterns('',
 
     # Contact
     # Form
-    url(r'^contact/$',
-        TemplateView.as_view(template_name='contact.html'),
-        name='contact'),
+    url(r'^contact/',
+        include('contact.urls')),
 
     # Admin
     # App
