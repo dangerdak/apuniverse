@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery{% endblock title %}
+
+{% block page_title %}Welcome to My Gallery{% endblock page_title %}
+
+{% block content %}
+	{% for image in object_list %}
+		<div class="image">
+			<h1>{{ image.title }}</h1>
+			<img src="{{ image.image.url }}"/>
+		</div>
+	{% endfor %}
+
+{% endblock content %}

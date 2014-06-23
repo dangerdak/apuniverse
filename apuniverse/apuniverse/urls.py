@@ -29,8 +29,8 @@ urlpatterns = patterns('',
     # Galleries
     # App
     url(r'^galleries/$',
-        TemplateView.as_view(template_name='galleries.html'),
-        name='galleries'),
+        include('galleries.urls'),
+        ),
 
     # About
     url(r'^about/$',
@@ -53,7 +53,7 @@ urlpatterns = patterns('',
 )
 
 # Uncomment the next line to serve media files in dev.
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
