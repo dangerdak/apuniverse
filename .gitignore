@@ -48,3 +48,6 @@ users.json
 
 # South migrations
 migrations/
+
+# Media
+media/
