@@ -1,5 +1,7 @@
 from django.db import models
 
+from image_cropping import ImageRatioField
+
 
 class Gallery(models.Model):
     title = models.CharField(max_length=200)
@@ -27,6 +29,7 @@ class Image(models.Model):
     medium = models.CharField(max_length=200, blank=True)
     size = models.CharField(max_length=50, blank=True)
     image = models.ImageField(upload_to='media/')
+    cropping = ImageRatioField('image', '100x100')
 
     gallery = models.ForeignKey(Gallery)
     date_created = models.DateTimeField(auto_now_add=True)

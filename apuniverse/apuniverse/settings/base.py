@@ -203,7 +203,9 @@ DJANGO_APPS = (
 
 # Apps specific for this project go here.
 THIRD_PARTY_APPS = (
-        )
+    'easy_thumbnails',
+    'image_cropping',
+    )
 
 LOCAL_APPS = (
     'galleries',
@@ -274,3 +276,14 @@ INSTALLED_APPS += (
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 CKEDITOR_UPLOAD_PATH = "uploads/" 
 ########## END DJANGO WYSIWYG CONFIGURATION 
+
+########## IMAGE-CROPPING CONFIGURATION
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+    ) + thumbnail_settings.THUMBNAIL_PROCESSORS
+SOUTH_MIGRATION_MODULES = {
+    'easy_thumbnails': 'easy_thumbnails.south_migrations',
+    }
+########## END IMAGE-CROPPING CONFIGURATION
+
