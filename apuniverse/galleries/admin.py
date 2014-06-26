@@ -20,6 +20,12 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
 class GalleryAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
 
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            '/static/html5sortable/jquery.sortable.js'
+        )
+
 
 class ImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('title', 'gallery', 'thumbnail')
