@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load cropping %}
+
 {% block title %}Gallery{% endblock title %}
 
 {% block page_title %}Welcome to My Gallery{% endblock page_title %}
@@ -8,7 +10,8 @@
 	{% for image in object_list %}
 		<div class="image">
 			<h1>{{ image.title }}</h1>
-			<img src="{{ image.image.url }}"/>
+			<img src="{{ image.image.url }}" />
+			<img src="{% cropped_thumbnail image "thumbnail" %}" />
 		</div>
 	{% endfor %}
 

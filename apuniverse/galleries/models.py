@@ -25,11 +25,11 @@ class Gallery(models.Model):
 class Image(models.Model):
     title = models.CharField(max_length=200, blank=True)
     slug = models.SlugField(max_length=40, unique=True)
-    date = models.DateField(blank=True)
+    date = models.DateField(blank=True, null=True)
     medium = models.CharField(max_length=200, blank=True)
     size = models.CharField(max_length=50, blank=True)
-    image = models.ImageField(upload_to='media/')
-    cropping = ImageRatioField('image', '100x100')
+    image = models.ImageField(upload_to='images/')
+    thumbnail = ImageRatioField('image', '100x100')
 
     gallery = models.ForeignKey(Gallery)
     date_created = models.DateTimeField(auto_now_add=True)

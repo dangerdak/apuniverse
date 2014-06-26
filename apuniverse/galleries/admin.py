@@ -4,11 +4,25 @@ from image_cropping import ImageCroppingMixin
 from galleries.models import Gallery, Image
 
 
-#class GalleryAdmin(admin.ModelAdmin):
-#    list_display = ['title', 'slug', 'project_year', 'image', 'blog_link', 'summary']
+class ImageInline(ImageCroppingMixin, admin.StackedInline):
+    model = Image
+    max_num = 16
+    template = 'galleries/admin/stacked.html'
+    extra = 1
+    fieldsets = [
+        (None,  {'fields': ['title', 'image', 'thumbnail']}),
+        ('Detailed Info',  {'fields': ['date', 'medium', 'size'], 'classes': ['collapse']}),
+        ('Advanced',    {'fields': ['slug'], 'classes': ['collapse']}),
+    ]
+    prepopulated_fields = {"slug": ("title",)}
+
+
+class GalleryAdmin(admin.ModelAdmin):
+    inlines = [ImageInline]
+
 
 class ImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    pass
+    list_display = ('title', 'gallery', 'thumbnail')
 
-admin.site.register(Gallery)
+admin.site.register(Gallery, GalleryAdmin)
 admin.site.register(Image, ImageAdmin)
