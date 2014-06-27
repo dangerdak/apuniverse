@@ -1,22 +1,6 @@
 {% load i18n admin_static %}
 {% load cropping %}
 
-<section>
-	<h2>Sortable Grid</h2>
-	<ul class="sortable grid">
-		<li>Item 1</li>
-		<li>Item 2</li>
-		<li>Item 3</li>
-		<li>Item 4</li>
-		<li>Item 5</li>
-		<li>Item 6</li>
-	</ul>
-</section>
-<script>
-		$('.sortable').sortable();
-</script>
-
-
 <div class="inline-group" id="{{ inline_admin_formset.formset.prefix }}-group">
   <h2>{{ inline_admin_formset.opts.verbose_name_plural|title }}</h2>
 {{ inline_admin_formset.formset.management_form }}

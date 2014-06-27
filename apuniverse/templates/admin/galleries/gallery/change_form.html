@@ -1,0 +1,13 @@
+{% extends "admin/change_form.html" %}
+{% block after_field_sets %}
+<p>Sortable?</p>
+<ul class="sortable grid">
+	{% for image in original.image_set.all %}
+		<li>{{ image.thumbnail_url|safe }}</li>
+	{% endfor %}
+</ul>
+
+<script>
+		$('.sortable').sortable();
+</script>
+{% endblock %}
