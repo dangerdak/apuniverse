@@ -23,7 +23,7 @@ class GalleryAdmin(admin.ModelAdmin):
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            '/static/html5sortable/jquery.sortable.js'
+            '/static/js/jquery.sortable.js'
         )
 
 
