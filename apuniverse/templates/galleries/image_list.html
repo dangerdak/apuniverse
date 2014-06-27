@@ -3,16 +3,36 @@
 {% load cropping %}
 
 {% block title %}Gallery{% endblock title %}
+{% block extrahead %}
+<style>
+.thumbnails {
+	background-color: red;
+	width: 488px;
+	padding: 0;
+}
+.thumbnail {
+	line-height: 80px;
+	float: left;
+	border: 1px solid #CCC;
+	background: #F6F6F6;
+	font-family: "Tahoma";
+	color: #1C94C4;
+	margin: 5px;
+	padding: 5px;
+	height: 100px;
+	width: 100px;
+}
+</style>
+{% endblock extrahead %}
 
 {% block page_title %}Welcome to My Gallery{% endblock page_title %}
 
 {% block content %}
-	{% for image in object_list %}
-		<div class="image">
-			<h1>{{ image.title }}</h1>
-			<img src="{{ image.image.url }}" />
-			<img src="{% cropped_thumbnail image "thumbnail" %}" />
-		</div>
-	{% endfor %}
-
+	<div class="thumbnails">
+		{% for image in original.image_set.all %}
+		<a href="{{ image.slug }}">
+			<img src="{% cropped_thumbnail image "thumbnail" %}" class="thumbnail"/>
+		</a>
+		{% endfor %}
+	</div>
 {% endblock content %}
