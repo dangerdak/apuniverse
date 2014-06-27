@@ -15,6 +15,7 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
         ('Advanced',    {'fields': ['slug'], 'classes': ['collapse']}),
     ]
     prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ['thumbnail_url']
 
 
 class GalleryAdmin(admin.ModelAdmin):
@@ -32,7 +33,7 @@ class GalleryAdmin(admin.ModelAdmin):
 
 
 class ImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    list_display = ('title', 'gallery', 'thumbnail')
+    list_display = ('title', 'gallery', 'thumbnail_url')
 
 admin.site.register(Gallery, GalleryAdmin)
 admin.site.register(Image, ImageAdmin)

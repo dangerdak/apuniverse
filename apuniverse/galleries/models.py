@@ -1,6 +1,7 @@
 from django.db import models
 
 from image_cropping import ImageRatioField
+from easy_thumbnails.files import get_thumbnailer
 
 
 class Gallery(models.Model):
@@ -34,6 +35,17 @@ class Image(models.Model):
     gallery = models.ForeignKey(Gallery)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField('Last Modified', auto_now=True)
+
+    def thumbnail_url(self):
+        url = get_thumbnailer(self.image).get_thumbnail({
+            'size': (100, 100),
+            'box': self.thumbnail,
+            'crop': True,
+            'detail': True,
+            }).url
+        return '<img src="%s" />' % url
+    # Disable escaping of html
+    thumbnail_url.allow_tags = True
 
     def __str__(self):
         return self.title
