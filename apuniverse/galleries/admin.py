@@ -23,8 +23,12 @@ class GalleryAdmin(admin.ModelAdmin):
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            '/static/js/jquery.sortable.js'
+            '/static/galleries/jquery.sortable.js'
         )
+        css = {
+            'all': ('/static/galleries/stacked-inline.css',
+                    '/static/galleries/sortable.css',)
+        }
 
 
 class ImageAdmin(ImageCroppingMixin, admin.ModelAdmin):

@@ -1,0 +1,10 @@
+.inline-related {
+	width: 40%;
+	margin: 3% 3%;
+	border: 1px solid #c5c5c5;
+	min-width: 400px;
+	display: inline-block;
+}
+.empty-form {
+	display: none;
+}
