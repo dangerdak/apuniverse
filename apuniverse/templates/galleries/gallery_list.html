@@ -40,7 +40,7 @@
 	<div class="thumbnails">
 		{% for image in gallery.image_list %}
 		<a href="{{ image.slug }}">
-			<img src="{% cropped_thumbnail image "thumbnail" %}" class="thumbnail"/>
+			<img src="{% cropped_thumbnail image "thumbnail" %}" class="thumbnail" data-id="{{ forloop.counter }}"/>
 		</a>
 		{% endfor %}
 	</div>
