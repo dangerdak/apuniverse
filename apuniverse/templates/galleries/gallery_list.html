@@ -2,21 +2,27 @@
 
 {% load cropping %}
 
-{% block title %}Gallery{% endblock title %}
 {% block extrahead %}
 <style>
+.gallery {
+	border: 1px solid #CCC;
+	text-align: center;
+
+}
+.large-image {
+	width: 400px;
+	display: inline-block;
+	vertical-align: top;
+}
 .thumbnails {
-	background-color: red;
 	width: 488px;
+	height: 488px;
 	padding: 0;
+	display: inline-block;
 }
 .thumbnail {
-	line-height: 80px;
 	float: left;
 	border: 1px solid #CCC;
-	background: #F6F6F6;
-	font-family: "Tahoma";
-	color: #1C94C4;
 	margin: 5px;
 	padding: 5px;
 	height: 100px;
@@ -28,11 +34,19 @@
 {% block page_title %}Welcome to My Gallery{% endblock page_title %}
 
 {% block content %}
+{% for gallery in gallery_list %}
+	<div class="gallery">
+	<h2>{{ gallery.title }}</h2>
 	<div class="thumbnails">
-		{% for image in original.image_set.all %}
+		{% for image in gallery.image_list %}
 		<a href="{{ image.slug }}">
 			<img src="{% cropped_thumbnail image "thumbnail" %}" class="thumbnail"/>
 		</a>
 		{% endfor %}
 	</div>
+	<div class="large-image">
+	<img src="http://www.w3schools.com/images/w3logotest2.png"/>
+	</div>
+	</div>
+{% endfor %}
 {% endblock content %}
