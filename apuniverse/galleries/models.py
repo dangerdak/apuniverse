@@ -33,8 +33,12 @@ class Image(models.Model):
     thumbnail = ImageRatioField('image', '100x100')
 
     gallery = models.ForeignKey(Gallery)
+    position = models.IntegerField(default=99999)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField('Last Modified', auto_now=True)
+
+    class Meta:
+        ordering = ['position']
 
     def thumbnail_url(self):
         url = get_thumbnailer(self.image).get_thumbnail({
@@ -49,3 +53,4 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
+
