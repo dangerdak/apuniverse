@@ -4,7 +4,7 @@
 <h2>Sort Thumbnails</h2>
 <ul class="sortable grid">
 	{% for image in original.image_set.all %}
-		<li>{{ image.thumbnail_url|safe }}</li>
+	<li><img src="{{ image.thumbnail_url }}" title="Position {{ forloop.counter }} ({{ image.title }})"/></li>
 	{% endfor %}
 </ul>
 </div>

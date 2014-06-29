@@ -10,7 +10,7 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
     template = 'galleries/admin/stacked.html'
     extra = 1
     fieldsets = [
-        (None,  {'fields': ['title', 'image', 'thumbnail']}),
+        (None,  {'fields': ['title', 'position', 'image', 'thumbnail']}),
         ('Detailed Info',  {'fields': ['date', 'medium', 'size'], 'classes': ['collapse']}),
         ('Advanced',    {'fields': ['slug'], 'classes': ['collapse']}),
     ]
@@ -31,6 +31,7 @@ class GalleryAdmin(admin.ModelAdmin):
             'all': ('/static/galleries/stacked-inline.css',
                     '/static/galleries/sortable.css',)
         }
+    save_on_top = True
 
 
 class ImageAdmin(ImageCroppingMixin, admin.ModelAdmin):

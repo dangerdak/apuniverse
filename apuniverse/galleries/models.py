@@ -47,7 +47,7 @@ class Image(models.Model):
             'crop': True,
             'detail': True,
             }).url
-        return '<img src="%s" />' % url
+        return url
     # Disable escaping of html
     thumbnail_url.allow_tags = True
 
