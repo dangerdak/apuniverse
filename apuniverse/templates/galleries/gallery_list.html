@@ -1,34 +1,10 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% load cropping %}
 
 {% block extrahead %}
-<style>
-.gallery {
-	border: 1px solid #CCC;
-	text-align: center;
-
-}
-.large-image {
-	width: 400px;
-	display: inline-block;
-	vertical-align: top;
-}
-.thumbnails {
-	width: 488px;
-	height: 488px;
-	padding: 0;
-	display: inline-block;
-}
-.thumbnail {
-	float: left;
-	border: 1px solid #CCC;
-	margin: 5px;
-	padding: 5px;
-	height: 100px;
-	width: 100px;
-}
-</style>
+<link rel="stylesheet" href="{% static "galleries/gallery_list.css" %}">
 {% endblock extrahead %}
 
 {% block page_title %}Welcome to My Gallery{% endblock page_title %}

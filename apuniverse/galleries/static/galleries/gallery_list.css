@@ -1,0 +1,23 @@
+.gallery {
+	border: 1px solid #CCC;
+	text-align: center;
+
+}
+.large-image {
+	width: 400px;
+	display: inline-block;
+	vertical-align: top;
+}
+.thumbnails {
+	width: 488px;
+	height: 488px;
+	padding: 0;
+	display: inline-block;
+}
+.thumbnail {
+	float: left;
+	margin: 5px;
+	padding: 0;
+	height: 100px;
+	width: 100px;
+}
