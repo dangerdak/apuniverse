@@ -10,9 +10,9 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
     template = 'galleries/admin/stacked.html'
     extra = 1
     fieldsets = [
-        (None,  {'fields': ['title', 'position', 'image', 'thumbnail']}),
+        (None,  {'fields': ['title', 'image', 'thumbnail']}),
         ('Detailed Info',  {'fields': ['date', 'medium', 'size'], 'classes': ['collapse']}),
-        ('Advanced',    {'fields': ['slug'], 'classes': ['collapse']}),
+        ('Advanced',    {'fields': ['slug', 'position'], 'classes': ['collapse']}),
     ]
     prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ['thumbnail_url']
