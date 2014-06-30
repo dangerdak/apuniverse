@@ -4,12 +4,39 @@
 <h2>Sort Thumbnails</h2>
 <ul class="sortable grid">
 	{% for image in original.image_set.all %}
-	<li><img src="{{ image.thumbnail_url }}" title="Position {{ forloop.counter }} ({{ image.title }})"/></li>
+	<li><img src="{{ image.thumbnail_url }}"
+		title="{{ image.title }}"
+		data-id="{{ forloop.counter0 }}"/></li>
 	{% endfor %}
 </ul>
 </div>
 
 <script>
-		$('.sortable').sortable();
+$('.sortable').sortable().bind('sortupdate', function(event, ui) {	
+		var thumbs = $(".sortable img");
+		var fields = $(".field-position input");
+		var idOrder;
+		var positions = {}
+
+		// List of thumbnail ids, in the order in which they appear
+		idOrder = $("ul.sortable img").map(function() {
+			return $(this).attr("data-id");
+			}).get();
+
+		// Positions in format "image index: position, ..."
+		for (var i = 0; i < idOrder.length; ++i) {
+			positions[idOrder[i]] = i;
+		}
+			
+		
+		for (var index in positions) {
+		// Change input field values to new postion values
+			fields.eq(index).val(positions[index]);
+		}
+
+		// Update HTML attributes
+		thumbs.each(function() {
+		})
+});
 </script>
 {% endblock %}
