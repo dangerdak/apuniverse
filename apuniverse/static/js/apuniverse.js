@@ -8,7 +8,9 @@ $(function() {
 		var largeImage = gallery.find('.large-image img');
 		thumbs.bind('click', largeImage, function() {
 			var url = $(this).attr('data-url');
+			var alt = $(this).attr('alt').split(' ').slice(0,-1).join(' ');
 			largeImage.attr('src', url);
+			largeImage.attr('alt', alt);
 		})
 	})
 

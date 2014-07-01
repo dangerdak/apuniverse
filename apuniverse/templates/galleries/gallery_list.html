@@ -14,14 +14,17 @@
 <div class="gallery">
 		<h2>{{ gallery.title }}</h2>
 
-		<div class="thumbnails" id="gallery-{{ forloop.counter }}">
+		<div class="thumbnails">
 			{% for image in gallery.image_list %}
-				<img src="{% cropped_thumbnail image "thumbnail" %}" class="thumbnail" data-url="{{ image.image.url }}"/>
+				<img src="{% cropped_thumbnail image "thumbnail" %}"
+				class="thumbnail"
+				alt="{{ image.title }} thumbnail"
+				data-url="{{ image.image.url }}"/>
 			{% endfor %}
 		</div>
 
 		<div class="large-image">
-			<img src="http://www.w3schools.com/images/w3logotest2.png" id="gallery-{{ forloop.counter }}"/>
+			<img src="" alt="Click on a thumbnail to enlarge"/>
 		</div>
 	</div>
 {% endfor %}
