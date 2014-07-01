@@ -11,6 +11,10 @@
 	vertical-align: top;
 	overflow: hidden;
 }
+.large-image img {
+	max-height: 100%;
+	max-width: 100%;
+}
 .thumbnails {
 	width: 488px;
 	height: 488px;
