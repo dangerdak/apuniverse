@@ -4,9 +4,12 @@
 
 }
 .large-image {
-	width: 400px;
+	width: 500px;
+	height: 500px;
+	background: lightblue;
 	display: inline-block;
 	vertical-align: top;
+	overflow: hidden;
 }
 .thumbnails {
 	width: 488px;

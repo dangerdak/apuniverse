@@ -11,18 +11,18 @@
 
 {% block content %}
 {% for gallery in gallery_list %}
-	<div class="gallery">
-	<h2>{{ gallery.title }}</h2>
-	<div class="thumbnails">
-		{% for image in gallery.image_list %}
-		<a href="{{ image.slug }}">
-			<img src="{% cropped_thumbnail image "thumbnail" %}" class="thumbnail"/>
-		</a>
-		{% endfor %}
-	</div>
-	<div class="large-image">
-	<img src="http://www.w3schools.com/images/w3logotest2.png"/>
-	</div>
+<div class="gallery">
+		<h2>{{ gallery.title }}</h2>
+
+		<div class="thumbnails" id="gallery-{{ forloop.counter }}">
+			{% for image in gallery.image_list %}
+				<img src="{% cropped_thumbnail image "thumbnail" %}" class="thumbnail" data-url="{{ image.image.url }}"/>
+			{% endfor %}
+		</div>
+
+		<div class="large-image">
+			<img src="http://www.w3schools.com/images/w3logotest2.png" id="gallery-{{ forloop.counter }}"/>
+		</div>
 	</div>
 {% endfor %}
 {% endblock content %}
