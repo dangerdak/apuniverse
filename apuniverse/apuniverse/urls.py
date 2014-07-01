@@ -32,10 +32,10 @@ urlpatterns = patterns('',
         include('galleries.urls'),
         ),
 
-    # About
-    url(r'^about/$',
-        TemplateView.as_view(template_name='about.html'),
-        name='about'),
+    # # About
+    # url(r'^about/$',
+    #     TemplateView.as_view(template_name='about.html'),
+    #     name='about'),
 
     # Contact
     # Form
@@ -50,6 +50,15 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
+)
+
+# Flat pages
+# About
+urlpatterns += patterns('django.contrib.flatpages.views',
+    url(r'^about/$',
+        'flatpage',
+        {'url': '/about/'},
+        name='about'),
 )
 
 # Uncomment the next line to serve media files in dev.
