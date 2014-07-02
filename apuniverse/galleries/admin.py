@@ -1,6 +1,8 @@
 from django.contrib import admin
 
 from image_cropping import ImageCroppingMixin
+
+from galleries.forms import TagForm
 from galleries.models import Gallery, Image
 
 
@@ -21,6 +23,8 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
 class GalleryAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
     fields = ['title', 'slug', 'project_year', 'blog_link', 'summary', 'tags']
+    prepopulated_fields = {"slug": ("title",)}
+    form = TagForm
 
     class Media:
         js = (
