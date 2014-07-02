@@ -1,11 +1,14 @@
 from django.utils import timezone
 from django.db import models
 
+from taggit.managers import TaggableManager
+
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=40, unique=True)
     text = models.TextField()
+    tags = TaggableManager()
 
     pub_date = models.DateTimeField('Publishing date', default=timezone.now)
     created_date = models.DateTimeField(auto_now_add=True)

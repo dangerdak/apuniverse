@@ -2,6 +2,7 @@ from django.db import models
 
 from image_cropping import ImageRatioField
 from easy_thumbnails.files import get_thumbnailer
+from taggit.managers import TaggableManager
 
 
 class Gallery(models.Model):
@@ -11,6 +12,7 @@ class Gallery(models.Model):
     blog_link = models.URLField('Associated blog (optional)',
                                 blank=True)
     summary = models.TextField(max_length=500, blank=True)
+    tags = TaggableManager()
 
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField('Last Modified', auto_now=True)

@@ -283,8 +283,16 @@ from easy_thumbnails.conf import Settings as thumbnail_settings
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
     ) + thumbnail_settings.THUMBNAIL_PROCESSORS
-SOUTH_MIGRATION_MODULES = {
-    'easy_thumbnails': 'easy_thumbnails.south_migrations',
-    }
 ########## END IMAGE-CROPPING CONFIGURATION
 
+########## TAGGIT CONFIGURATION
+INSTALLED_APPS += (
+    'taggit',
+    'taggit_labels',
+)
+########## END TAGGIT CONFIGURATION
+
+SOUTH_MIGRATION_MODULES = {
+    'easy_thumbnails': 'easy_thumbnails.south_migrations',
+    'taggit': 'taggit.south_migrations',
+}

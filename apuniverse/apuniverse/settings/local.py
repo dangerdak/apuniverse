@@ -70,5 +70,5 @@ INTERNAL_IPS = ('127.0.0.1',)
 ########## END TOOLBAR CONFIGURATION
 
 INSTALLED_APPS += (
-        'django_extensions',
-        )
+    'django_extensions',
+)
