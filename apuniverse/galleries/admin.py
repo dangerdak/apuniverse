@@ -20,7 +20,7 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
 
 class GalleryAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
-    fields = ['title', 'slug', 'project_year', 'blog_link', 'summary']
+    fields = ['title', 'slug', 'project_year', 'blog_link', 'summary', 'tags']
 
     class Media:
         js = (

@@ -287,7 +287,7 @@ THUMBNAIL_PROCESSORS = (
 
 ########## TAGGIT CONFIGURATION
 INSTALLED_APPS += (
-    'django-taggit',
+    'taggit',
 )
 ########## END TAGGIT CONFIGURATION
 
