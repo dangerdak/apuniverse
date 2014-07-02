@@ -7,10 +7,12 @@ $(function() {
 		var thumbs = gallery.find('.thumbnail');
 		var largeImage = gallery.find('.large-image img');
 		thumbs.bind('click', largeImage, function() {
+			thumbs.css('border', '');
 			var url = $(this).attr('data-url');
 			var alt = $(this).attr('alt').split(' ').slice(0,-1).join(' ');
 			largeImage.attr('src', url);
 			largeImage.attr('alt', alt);
+			$(this).css('border', '1px solid black');
 		})
 	})
 
