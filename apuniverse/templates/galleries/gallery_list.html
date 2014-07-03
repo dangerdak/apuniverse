@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load endless %}
 
 {% block extrahead %}
 <link rel="stylesheet" href="{% static "galleries/gallery_list.css" %}">
@@ -9,14 +8,6 @@
 
 {% block content %}
 
-{% lazy_paginate 2 gallery_list %}
 	{% include "galleries/gallery_list_page.html" %}
-{% show_more %}
-		<script>
-console.log("hi");
-$.endlessPaginate({
-	paginateOnScroll: true,
-	paginateOnScrollMargin: 20
-	});
-</script>
+
 {% endblock content %}
