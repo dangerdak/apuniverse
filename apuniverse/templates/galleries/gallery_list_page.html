@@ -1,5 +1,7 @@
 {% load cropping %}
+{% load endless %}
 
+{% lazy_paginate 2 gallery_list %}
 {% for gallery in gallery_list %}
 <div class="gallery">
 		<h2>{{ gallery.title }}</h2>
@@ -18,3 +20,4 @@
 		</div>
 	</div>
 {% endfor %}
+{% show_more %}
