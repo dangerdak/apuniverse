@@ -292,6 +292,13 @@ INSTALLED_APPS += (
 )
 ########## END TAGGIT CONFIGURATION
 
+########## ENDLESS PAGINATION CONFIGURATION
+INSTALLED_APPS += (
+    'endless_pagination',
+)
+ENDLESS_PAGINATION_PER_PAGE = 2
+########## END ENDLESS PAGINATION CONFIGURATION
+
 SOUTH_MIGRATION_MODULES = {
     'easy_thumbnails': 'easy_thumbnails.south_migrations',
     'taggit': 'taggit.south_migrations',
