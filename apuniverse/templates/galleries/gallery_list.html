@@ -1,38 +1,22 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-
-{% load cropping %}
 {% load endless %}
 
 {% block extrahead %}
 <link rel="stylesheet" href="{% static "galleries/gallery_list.css" %}">
 {% endblock extrahead %}
-
 {% block page_title %}Welcome to My Gallery{% endblock page_title %}
 
 {% block content %}
 
-{% paginate gallery_list %}
-
-{% for gallery in gallery_list %}
-<div class="gallery">
-		<h2>{{ gallery.title }}</h2>
-
-		<div class="thumbnails">
-			{% for image in gallery.image_list %}
-				<img src="{% cropped_thumbnail image "thumbnail" %}"
-				class="thumbnail"
-				alt="{{ image.title }} thumbnail"
-				data-url="{{ image.image.url }}"/>
-			{% endfor %}
-		</div>
-
-		<div class="large-image">
-			<img src="" alt="Click on a thumbnail to enlarge"/>
-		</div>
-	</div>
-{% endfor %}
-
-{% show_pages %}
-
+{% lazy_paginate 2 gallery_list %}
+	{% include "galleries/gallery_list_page.html" %}
+{% show_more %}
+		<script>
+console.log("hi");
+$.endlessPaginate({
+	paginateOnScroll: true,
+	paginateOnScrollMargin: 20
+	});
+</script>
 {% endblock content %}

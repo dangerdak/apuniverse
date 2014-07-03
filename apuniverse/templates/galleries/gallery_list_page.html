@@ -1,0 +1,20 @@
+{% load cropping %}
+
+{% for gallery in gallery_list %}
+<div class="gallery">
+		<h2>{{ gallery.title }}</h2>
+
+		<div class="thumbnails">
+			{% for image in gallery.image_list %}
+				<img src="{% cropped_thumbnail image "thumbnail" %}"
+				class="thumbnail"
+				alt="{{ image.title }} thumbnail"
+				data-url="{{ image.image.url }}"/>
+			{% endfor %}
+		</div>
+
+		<div class="large-image">
+			<img src="" alt="Click on a thumbnail to enlarge"/>
+		</div>
+	</div>
+{% endfor %}

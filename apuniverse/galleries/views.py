@@ -1,8 +1,9 @@
-from django.views.generic import ListView
+from endless_pagination.views import AjaxListView
+
 from galleries.models import Image, Gallery
 
 
-class IndexView(ListView):
+class IndexView(AjaxListView):
     model = Gallery
 
     def get_context_data(self, **kwargs):
