@@ -206,7 +206,8 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'easy_thumbnails',
     'image_cropping',
-    )
+    'django_extensions',
+)
 
 LOCAL_APPS = (
     'galleries',
