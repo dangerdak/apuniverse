@@ -9,12 +9,11 @@ from galleries.models import Gallery, Image
 class ImageInline(ImageCroppingMixin, admin.StackedInline):
     model = Image
     max_num = 16
-    template = 'galleries/admin/stacked.html'
     extra = 1
     fieldsets = [
         (None,  {'fields': ['title', 'image', 'thumbnail']}),
-        ('Detailed Info',  {'fields': ['date', 'medium', 'size'], 'classes': ['collapse']}),
-        ('Advanced',    {'fields': ['slug', 'position'], 'classes': ['collapse']}),
+        ('Detailed Info',  {'fields': ['date', 'medium', 'size'], 'classes': ['grp-collapse grp-closed']}),
+        ('Advanced',    {'fields': ['slug', 'thumbnail_position'], 'classes': ['grp-collapse grp-closed']}),
     ]
     prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ['thumbnail_url']
