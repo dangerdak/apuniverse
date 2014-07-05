@@ -10,16 +10,30 @@ class Post(models.Model):
     text = models.TextField()
     tags = TaggableManager()
 
-    pub_date = models.DateTimeField('Publishing date', default=timezone.now)
-    created_date = models.DateTimeField(auto_now_add=True)
-    modified_date = models.DateTimeField('Last Modified', auto_now=True)
+    pub_date = models.DateTimeField('Date published', default=timezone.now)
+    date_created = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField('Last Modified', auto_now=True)
 
     def get_absolute_url(self):
-        # Hardcoded url in model!!
+        # TODO Hardcoded url in model!!
         date = (self.pub_date.strftime('%Y %b')).lower().split()
         return "/blog/%s/%s/%s" % (date[0],
                                    date[1],
                                    self.slug)
+
+    # TODO not DRY!! (gallery models)
+    def tag_names(self):
+        tag_list = list(self.tags.names())
+        return ', '.join(tag_list)
+    tag_names.short_description = 'Tags'
+
+    def is_published(self):
+        if self.pub_date > timezone.now():
+            return False
+        return True
+    is_published.boolean = True
+    is_published.short_description = 'Published?'
+    is_published.admin_order_field = 'pub_date'
 
     class Meta:
         ordering = ['-pub_date']
