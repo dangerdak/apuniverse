@@ -198,6 +198,7 @@ DJANGO_APPS = (
     # 'django.contrib.humanize',
 
     # Admin panel and documentation:
+    'grappelli.dashboard',
     'grappelli',
     'django.contrib.admin',
     # 'django.contrib.admindocs',
@@ -303,6 +304,8 @@ INSTALLED_APPS += (
 ########## GRAPPELLI CONFIGURATION
 GRAPPELLI_ADMIN_TITLE = "ANNIE POTTER'S UNIVERSE"
 GRAPPELLI_SWITCH_USER = True
+GRAPPELLI_INDEX_DASHBOARD = 'apuniverse.dashboard.CustomIndexDashboard'
+
 ########## END GRAPPELLI CONFIGURATION
 
 SOUTH_MIGRATION_MODULES = {
