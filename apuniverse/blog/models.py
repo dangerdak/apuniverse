@@ -1,5 +1,6 @@
 from django.utils import timezone
 from django.db import models
+from django.template.defaultfilters import slugify
 
 from taggit.managers import TaggableManager
 
@@ -34,6 +35,13 @@ class Post(models.Model):
     is_published.boolean = True
     is_published.short_description = 'Published?'
     is_published.admin_order_field = 'pub_date'
+
+    # TODO not dry
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Newly created object, so set slug
+            self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['-pub_date']
