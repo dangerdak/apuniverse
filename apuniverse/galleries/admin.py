@@ -11,13 +11,14 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
     template = 'admin/edit_inline/stacked.html'
     fieldsets = [
         (None,  {'fields': ['title', 'image', 'thumbnail']}),
-        ('Detailed Info',  {'fields': ['date', 'medium', 'size'], 'classes': ['grp-collapse grp-closed']}),
-        ('Advanced',    {'fields': ['thumbnail_position'], 'classes': ['grp-collapse grp-closed']}),
+        ('Detailed Info',  {'fields': ['date', 'medium', 'size'],
+                            'classes': ['grp-collapse grp-closed']}),
+        ('Advanced',    {'fields': ['thumbnail_position'],
+                         'classes': ['grp-collapse grp-closed']}),
     ]
     readonly_fields = ['thumbnail_url']
     extra = 0
     classes = ['grp-collapse grp-open']
-    inline_classes = ['grp-collapse grp-closed']
 
 
 class GalleryAdmin(admin.ModelAdmin):
@@ -40,15 +41,14 @@ class GalleryAdmin(admin.ModelAdmin):
         blog_link.widget.can_add_related = False
         return form
 
-
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            '/static/galleries/jquery.sortable.js'
+            '/static/galleries/jquery.sortable.js',
+            '/static/js/stacked.js',
         )
         css = {
-            'all': ('/static/galleries/stacked-inline.css',
-                    '/static/galleries/sortable.css',)
+            'all': ('/static/galleries/sortable.css',)
         }
 
 
