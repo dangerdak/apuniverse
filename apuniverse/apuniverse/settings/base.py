@@ -300,6 +300,11 @@ INSTALLED_APPS += (
 )
 ########## END ENDLESS PAGINATION CONFIGURATION
 
+########## GRAPPELLI CONFIGURATION
+GRAPPELLI_ADMIN_TITLE = "ANNIE POTTER'S UNIVERSE"
+GRAPPELLI_SWITCH_USER = True
+########## END GRAPPELLI CONFIGURATION
+
 SOUTH_MIGRATION_MODULES = {
     'easy_thumbnails': 'easy_thumbnails.south_migrations',
     'taggit': 'taggit.south_migrations',
