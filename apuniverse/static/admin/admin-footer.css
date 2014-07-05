@@ -1,0 +1,26 @@
+.grp-fixed-footer .grp-button {
+	width: 1em;
+	height: 1em;
+	background: red;
+}
+footer .grp-fixed-footer {
+	background: red;
+}
+<style>
+footer.grp-module.grp-submit-row.grp-fixed-footer {
+	background-color: red !important;
+	background-image: none;
+	height: 40px;
+}
+.grp-module.grp-submit-row.grp-fixed-footer .grp-button {
+	border: 2px solid black;
+	filter: none;
+	color: blue;
+}
+.grp-module.grp-submit-row.grp-fixed-footer li {
+	padding: 0;
+	background-color: green;
+	height: 0;
+	overflow: visible;
+}
+</style>

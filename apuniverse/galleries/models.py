@@ -48,7 +48,7 @@ class Gallery(models.Model):
 
 
 class Image(models.Model):
-    title = models.CharField(max_length=200, blank=True)
+    title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=40, unique=True)
     date = models.DateField(blank=True, null=True)
     medium = models.CharField(max_length=200, blank=True)
