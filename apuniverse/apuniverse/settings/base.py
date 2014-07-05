@@ -275,9 +275,10 @@ SOUTH_TESTS_MIGRATE = False
 INSTALLED_APPS += (
         'django_wysiwyg',
         'ckeditor',
+        'tinymce',
         )
 
-DJANGO_WYSIWYG_FLAVOR = "ckeditor"
+DJANGO_WYSIWYG_FLAVOR = "tinymce_advanced"
 CKEDITOR_UPLOAD_PATH = "uploads/" 
 ########## END DJANGO WYSIWYG CONFIGURATION 
 
