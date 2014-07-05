@@ -23,16 +23,22 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
 class GalleryAdmin(admin.ModelAdmin):
     # Changeform page
     inlines = [ImageInline]
-    fields = ['title', 'slug', 'project_year', 'linked_blog',
+    fields = ['title', 'project_year', 'linked_blog',
               'summary', 'tags']
     form = TagForm
     save_on_top = True
 
     # Changelist page
     list_display = ('title', 'project_year', 'number_images',
-                    'tag_names', 'blog_link', 'date_created')
+                    'tag_names', 'blog_url', 'date_created')
     list_filter = ['tags', 'project_year']
     search_fields = ['title', 'summary']
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(GalleryAdmin, self).get_form(request, obj, **kwargs)
+        blog_link = form.base_fields['linked_blog']
+        blog_link.widget.can_add_related = False
+        return form
 
 
     class Media:
