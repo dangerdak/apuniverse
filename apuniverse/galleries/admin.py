@@ -8,21 +8,21 @@ from galleries.models import Gallery, Image
 
 class ImageInline(ImageCroppingMixin, admin.StackedInline):
     model = Image
-    max_num = 16
-    extra = 1
+    template = 'admin/edit_inline/stacked.html'
     fieldsets = [
         (None,  {'fields': ['title', 'image', 'thumbnail']}),
         ('Detailed Info',  {'fields': ['date', 'medium', 'size'], 'classes': ['grp-collapse grp-closed']}),
-        ('Advanced',    {'fields': ['slug', 'thumbnail_position'], 'classes': ['grp-collapse grp-closed']}),
+        ('Advanced',    {'fields': ['thumbnail_position'], 'classes': ['grp-collapse grp-closed']}),
     ]
-    prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ['thumbnail_url']
+    extra = 0
+    classes = ['grp-collapse grp-open']
+    inline_classes = ['grp-collapse grp-closed']
 
 
 class GalleryAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
-    fields = ['title', 'slug', 'project_year', 'blog_link', 'summary', 'tags']
-    prepopulated_fields = {"slug": ("title",)}
+    fields = ['title', 'project_year', 'blog_link', 'summary', 'tags']
     form = TagForm
 
     class Media:

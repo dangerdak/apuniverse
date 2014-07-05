@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 from image_cropping import ImageRatioField
 from easy_thumbnails.files import get_thumbnailer
@@ -20,6 +21,12 @@ class Gallery(models.Model):
     class Meta:
         ordering = ['-project_year', '-date_created']
         verbose_name_plural = 'galleries'
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Newly created object, so set slug
+            self.slug = slugify(self.title)
+        super(Gallery, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
@@ -53,6 +60,12 @@ class Image(models.Model):
         return url
     # Disable escaping of html
     thumbnail_url.allow_tags = True
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Newly created object, so set slug
+            self.slug = slugify(self.title)
+        super(Image, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
