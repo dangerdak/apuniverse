@@ -23,11 +23,11 @@ class Gallery(models.Model):
         return ', '.join(tag_list)
     tag_names.short_description = 'Tags'
 
-    def blog_link(self):
+    def blog_url(self):
         if (self.linked_blog):
             return self.linked_blog.get_absolute_url()
         return ''
-    blog_link.short_description = 'Linked blog'
+    blog_url.short_description = 'Blog link'
 
     def number_images(self):
         return self.image_set.count()
