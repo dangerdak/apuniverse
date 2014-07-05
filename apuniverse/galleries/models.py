@@ -9,13 +9,28 @@ class Gallery(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=40, unique=True)
     project_year = models.IntegerField(max_length=9)
-    blog_link = models.URLField('Associated blog (optional)',
-                                blank=True)
+    linked_blog = models.ForeignKey('blog.Post', blank=True, null=True)
     summary = models.TextField(max_length=500, blank=True)
     tags = TaggableManager()
 
     date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField('Last Modified', auto_now=True)
+    last_modified = models.DateTimeField('Last Modified', auto_now=True)
+
+    # TODO not DRY!! (blog models)
+    def tag_names(self):
+        tag_list = list(self.tags.names())
+        return ', '.join(tag_list)
+    tag_names.short_description = 'Tags'
+
+    def blog_link(self):
+        if (self.linked_blog):
+            return self.linked_blog.get_absolute_url()
+        return ''
+    blog_link.short_description = 'Linked blog'
+
+    def number_images(self):
+        return self.image_set.count()
+    number_images.short_description = 'Number of images'
 
     class Meta:
         ordering = ['-project_year', '-date_created']
@@ -35,12 +50,12 @@ class Image(models.Model):
     thumbnail = ImageRatioField('image', '100x100')
 
     gallery = models.ForeignKey(Gallery)
-    position = models.IntegerField(blank=True, null=True)
+    thumbnail_position = models.IntegerField(blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField('Last Modified', auto_now=True)
 
     class Meta:
-        ordering = ['position', '-date_created']
+        ordering = ['thumbnail_position', '-date_created']
 
     def thumbnail_url(self):
         url = get_thumbnailer(self.image).get_thumbnail({
