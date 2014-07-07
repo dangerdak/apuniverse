@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Count
 
 from image_cropping import ImageCroppingMixin
 
@@ -36,10 +37,18 @@ class GalleryAdmin(admin.ModelAdmin):
         return form
 
     # Changelist page
+    def queryset(self, request):
+        return Gallery.objects.annotate(Count('image'))
+
+    def image_count(self, obj):
+        return obj.image__count
+    image_count.admin_order_field = 'image__count'
+    image_count.short_description = 'Number of images'
+
     def tags(obj):
         return ', '.join(list(obj.tags.names()))
 
-    list_display = ('title', 'project_year', 'number_images',
+    list_display = ('title', 'project_year', 'image_count',
                     tags, 'blog_url', 'date_created')
     list_filter = ['tags', 'project_year']
     search_fields = ['title', 'summary']

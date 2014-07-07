@@ -23,10 +23,6 @@ class Gallery(models.Model):
         return ''
     blog_url.short_description = 'Blog link'
 
-    def number_images(self):
-        return self.image_set.count()
-    number_images.short_description = 'Number of images'
-
     class Meta:
         ordering = ['-project_year', '-date_created']
         verbose_name_plural = 'galleries'
