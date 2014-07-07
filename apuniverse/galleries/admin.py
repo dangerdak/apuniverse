@@ -29,23 +29,26 @@ class GalleryAdmin(admin.ModelAdmin):
     form = TagForm
     save_on_top = True
 
-    # Changelist page
-    list_display = ('title', 'project_year', 'number_images',
-                    'tag_names', 'blog_url', 'date_created')
-    list_filter = ['tags', 'project_year']
-    search_fields = ['title', 'summary']
-
     def get_form(self, request, obj=None, **kwargs):
         form = super(GalleryAdmin, self).get_form(request, obj, **kwargs)
         blog_link = form.base_fields['linked_blog']
         blog_link.widget.can_add_related = False
         return form
 
+    # Changelist page
+    def tags(obj):
+        return ', '.join(list(obj.tags.names()))
+
+    list_display = ('title', 'project_year', 'number_images',
+                    tags, 'blog_url', 'date_created')
+    list_filter = ['tags', 'project_year']
+    search_fields = ['title', 'summary']
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            '/static/galleries/jquery.sortable.js',
-            '/static/js/stacked.js',
+            'galleries/jquery.sortable.js',
+            'js/stacked.js',
         )
         css = {
             'all': ('/static/galleries/sortable.css',)

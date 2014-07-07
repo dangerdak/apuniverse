@@ -1,12 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.conf import settings
-from django.views.generic import TemplateView, ListView
-
-from blog.models import Post
-
-# Uncomment the next two lines to enable the admin:
+from django.views.generic import TemplateView
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -28,7 +25,7 @@ urlpatterns = patterns('',
 
     # Galleries
     # App
-    url(r'^galleries/$',
+    url(r'^galleries/',
         include('galleries.urls'),
         ),
 

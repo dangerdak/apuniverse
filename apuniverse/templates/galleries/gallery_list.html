@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load taggit_extras %}
 
 {% block extrahead %}
 <link rel="stylesheet" href="{% static "galleries/gallery_list.css" %}">
@@ -8,6 +9,12 @@
 
 {% block content %}
 
+	{% get_taglist as all_galleries_tags for 'Galleries' %}
+	<ul>
+		{% for tag in all_galleries_tags %}
+		<li><a href="{% url 'galleriestags' tag.slug %}">{{ tag }} ({{ tag.num_times }})</a></li>
+		{% endfor %}
+	</ul>
 	{% include "galleries/gallery_list_page.html" %}
 
-{% endblock content %}
+	{% endblock content %}

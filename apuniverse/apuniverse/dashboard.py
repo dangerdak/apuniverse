@@ -27,7 +27,8 @@ class CustomIndexDashboard(Dashboard):
             column=1,
             models=('django.contrib.flatpages.models.FlatPage',
                     'blog.models.Post',
-                    'galleries.models.Gallery')
+                    'galleries.models.Gallery',
+                    'taggit.models.Tag')
         ))
 
 #        self.children.append(modules.ModelList(

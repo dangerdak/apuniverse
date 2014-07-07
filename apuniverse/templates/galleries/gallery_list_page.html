@@ -4,7 +4,8 @@
 {% lazy_paginate 2 gallery_list %}
 {% for gallery in gallery_list %}
 <div class="gallery">
-		<h2>{{ gallery.title }}</h2>
+	<h2>{{ gallery.title }}
+				({% for tag in gallery.tags.names %}{{ tag }} {% endfor %})</h2>
 
 		<div class="thumbnails">
 			{% for image in gallery.image_list %}

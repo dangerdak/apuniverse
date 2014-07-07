@@ -17,12 +17,6 @@ class Gallery(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField('Last Modified', auto_now=True)
 
-    # TODO not DRY!! (blog models)
-    def tag_names(self):
-        tag_list = list(self.tags.names())
-        return ', '.join(tag_list)
-    tag_names.short_description = 'Tags'
-
     def blog_url(self):
         if (self.linked_blog):
             return self.linked_blog.get_absolute_url()
