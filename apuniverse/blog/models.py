@@ -2,13 +2,14 @@ from django.utils import timezone
 from django.db import models
 from django.template.defaultfilters import slugify
 
+from ckeditor.fields import RichTextField
 from taggit.managers import TaggableManager
 
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=40, unique=True)
-    text = models.TextField()
+    text = RichTextField(config_name='blog')
     tags = TaggableManager()
 
     pub_date = models.DateTimeField('Date published', default=timezone.now)

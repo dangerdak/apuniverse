@@ -7,7 +7,7 @@ from blog.forms import TagForm
 class PostAdmin(admin.ModelAdmin):
     # Changeform page
     exclude = ('slug',)
-    change_form_template = 'blog/admin/change_form.html'
+#    change_form_template = 'blog/admin/change_form.html'
     form = TagForm
 
     # Changelist page

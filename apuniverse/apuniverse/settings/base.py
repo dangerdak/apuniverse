@@ -273,13 +273,20 @@ SOUTH_TESTS_MIGRATE = False
 
 ########## DJANGO WYSIWYG CONFIGURATION 
 INSTALLED_APPS += (
-        'django_wysiwyg',
+#        'django_wysiwyg',
         'ckeditor',
-        'tinymce',
+#        'tinymce',
         )
 
-DJANGO_WYSIWYG_FLAVOR = "tinymce_advanced"
+#DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 CKEDITOR_UPLOAD_PATH = "uploads/" 
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_CONFIGS = {
+    'blog': {
+        'toolbar': 'Mine',
+
+    },
+}
 ########## END DJANGO WYSIWYG CONFIGURATION 
 
 ########## IMAGE-CROPPING CONFIGURATION

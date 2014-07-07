@@ -1,0 +1,38 @@
+{% extends "admin/change_form.html" %}
+
+{% load wysiwyg %}
+
+{% block extrahead %}
+	{{ block.super }}
+	{% wysiwyg_setup %}
+	
+{% endblock %}
+
+{% block extrastyle %}
+	{{ block.super }}
+	
+	<style type="text/css">
+			/* CKEditor: */
+			.cke_skin_kama {
+				/* Un-comment one line or the other: */
+				/*width: 85%; float: left; display: inline;*/
+				/*clear: left;*/
+			}
+	</style>
+	
+{% endblock %}
+
+{% block content %}
+	{{ block.super }}
+	
+	{# Replace XXXXXXXX with field name: #}
+	
+	{% comment %}
+		{# ckeditor custom config example #}
+		{% wysiwyg_editor "id_XXXXXXXX" "id_XXXXXXXX_editor" "{ toolbar: 'compact_toolbar' }" %}
+	{% endcomment %}
+		{% wysiwyg_editor "id_text" "cke_id_text" "{ toolbar: 'basic' }" %}
+	
+	{# ... add more here... #}
+
+{% endblock %}

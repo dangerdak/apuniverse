@@ -50,6 +50,10 @@ urlpatterns = patterns('',
     url(r'^admin/',
         include(admin.site.urls)),
 
+    # CKEditor
+    url(r'^ckeditor/',
+        include('ckeditor.urls')),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

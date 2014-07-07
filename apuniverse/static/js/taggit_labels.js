@@ -15,6 +15,7 @@
       var tagName = $(this).attr("data-tag-name");
 	  tagItems.removeClass("selected");
 	  tagList = [];
+	  console.log('hi');
 
       // Tag names need to be quotes if they contain commas or quotation marks
       if(tagName.indexOf(",") != -1 || tagName.indexOf(" ") != -1) {
