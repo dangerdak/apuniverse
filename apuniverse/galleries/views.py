@@ -8,6 +8,7 @@ from galleries.models import Image, Gallery
 
 
 class GalleryListView(AjaxListView):
+    model = Gallery
 
     # Annotate each gallery with count of associated images
     # numbered_galleries = Gallery.objects.annotate(Count('image'))
