@@ -1,3 +1,4 @@
+// Automatically uncollapse new empty item
 $(function() {
 	var addItem = $('.grp-group .grp-add-handler');
 	console.log(addItem.length);
