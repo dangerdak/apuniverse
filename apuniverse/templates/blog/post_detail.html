@@ -7,7 +7,7 @@
 {% block content %}
 	<div class='post-detail'>
 		<h1>{{ object.title }}</h1>
-		<p>Last modified: {{ object.modified_date }}</p>
+		<p>Last modified: {{ object.last_modified }}</p>
 		{{ object.text|safe }}
 	</div>
 {% endblock content %}

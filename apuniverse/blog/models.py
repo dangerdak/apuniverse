@@ -23,12 +23,6 @@ class Post(models.Model):
                                    date[1],
                                    self.slug)
 
-    # TODO not DRY!! (gallery models)
-    def tag_names(self):
-        tag_list = list(self.tags.names())
-        return ', '.join(tag_list)
-    tag_names.short_description = 'Tags'
-
     def is_published(self):
         if self.pub_date > timezone.now():
             return False

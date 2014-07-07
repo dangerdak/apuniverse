@@ -1,7 +1,6 @@
 // Automatically uncollapse new empty item
 $(function() {
 	var addItem = $('.grp-group .grp-add-handler');
-	console.log(addItem.length);
 	var doc = $(this);
 	addItem.bind('click', doc, function() {
 		console.log('Ran')

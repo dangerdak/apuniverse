@@ -301,6 +301,7 @@ THUMBNAIL_PROCESSORS = (
 INSTALLED_APPS += (
     'taggit',
     'taggit_labels',
+    'taggit_templatetags',
 )
 ########## END TAGGIT CONFIGURATION
 

@@ -11,7 +11,10 @@ class PostAdmin(admin.ModelAdmin):
     form = TagForm
 
     # Changelist page
-    list_display = ('title', 'tag_names',
+    def tags(obj):
+        return ', '.join(list(obj.tags.names()))
+
+    list_display = ('title', tags,
                     'is_published', 'date_created')
     list_filter = ['tags']
     search_fields = ['title', 'text']
