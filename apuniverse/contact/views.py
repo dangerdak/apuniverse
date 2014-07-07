@@ -10,6 +10,12 @@ def contact(request):
         # Bound form
         form = ContactForm(request.POST)
         if form.is_valid():
+            no_fill = form.cleaned_data['no_fill']
+            # Don't send email if honeypot is filled in
+            # but redirect anyway
+            if (no_fill):
+                return HttpResponseRedirect('/contact/thanks/')
+
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             sender_email = form.cleaned_data['sender_email']
