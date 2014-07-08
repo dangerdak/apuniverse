@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from django.views.generic import DetailView
 
-from blog.views import PostListView, TagPostList
+from blog.views import PostListView, PostListByTag
 from blog.models import Post
 
 urlpatterns = patterns('',
@@ -16,7 +16,7 @@ urlpatterns = patterns('',
         ),
     # Category views
     url(r'^tags/(?P<tags>\w*)/$',
-        TagPostList.as_view(),
+        PostListByTag.as_view(),
         name='blogtags',
         ),
 )

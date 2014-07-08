@@ -25,10 +25,10 @@ class ImageInline(ImageCroppingMixin, admin.StackedInline):
 class GalleryAdmin(admin.ModelAdmin):
     # Changeform page
     inlines = [ImageInline]
-    fields = ['title', 'project_year', 'linked_blog',
+    fields = ['title', 'status', 'project_year', 'linked_blog',
               'summary', 'tags']
+    radio_fields = {'status': admin.HORIZONTAL}
     form = TagForm
-    save_on_top = True
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(GalleryAdmin, self).get_form(request, obj, **kwargs)
@@ -51,8 +51,8 @@ class GalleryAdmin(admin.ModelAdmin):
     def tags(obj):
         return ', '.join(list(obj.tags.names()))
 
-    list_display = ('title', 'project_year', 'image_count',
-                    tags, 'blog_url', 'date_created')
+    list_display = ('title', tags, 'status', 'project_year', 'image_count',
+                    'blog_url', 'date_created')
     list_filter = ['tags', 'project_year']
     search_fields = ['title', 'summary']
 

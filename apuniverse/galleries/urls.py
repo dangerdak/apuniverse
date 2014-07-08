@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from galleries.views import TagGalleryList, GalleryListView
+from galleries.views import GalleryListView, GalleryListByTag
 
 urlpatterns = patterns('',
     url(r'^$',
@@ -9,6 +9,6 @@ urlpatterns = patterns('',
 
     # Category views
     url(r'^tags/(?P<tags>\w*)/$',
-        TagGalleryList.as_view(),
+        GalleryListByTag.as_view(),
         name='galleriestags'),
 )

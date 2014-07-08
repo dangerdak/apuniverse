@@ -6,17 +6,21 @@ from blog.forms import TagForm
 
 class PostAdmin(admin.ModelAdmin):
     # Changeform page
-    exclude = ('slug',)
+    fields = ('title', 'status', 'text', 'tags')
+    radio_fields = {'status': admin.HORIZONTAL}
 #    change_form_template = 'blog/admin/change_form.html'
     form = TagForm
 
     # Changelist page
+    change_list_template = 'admin/change_list_filter_sidebar.html'
+    change_list_filter_template = 'admin/filter_listing.html'
+
     def tags(obj):
         return ', '.join(list(obj.tags.names()))
 
     list_display = ('title', tags,
-                    'is_published', 'date_created')
-    list_filter = ['tags']
+                    'status', 'date_created')
+    list_filter = ['tags', 'status']
     search_fields = ['title', 'text']
 
 admin.site.register(Post, PostAdmin)
