@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.core.mail import EmailMessage, BadHeaderError
+from django.core.exceptions import SuspiciousOperation
 
 from contact.forms import ContactForm
 
@@ -25,9 +27,14 @@ def contact(request):
             if cc_myself:
                 recipients.append(sender_email)
 
-            from django.core.mail import send_mail
-            send_mail(subject, message, sender_email, recipients,
-                      fail_silently=False)
+            email = EmailMessage(subject, message, sender_email, recipients,
+                                 headers={'Reply-To': sender_email})
+            try:
+                email.send(fail_silently=True)
+            # Prevent header injection
+            except BadHeaderError:
+                raise SuspiciousOperation()
+
             return HttpResponseRedirect('/contact/thanks/')
     else:
         # Unbound form
