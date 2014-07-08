@@ -13,6 +13,8 @@
 				class="thumbnail"
 				alt="{{ image.title }} thumbnail"
 				data-url="{{ image.image.url }}"/>
+			{% empty %}
+					<p>There are no images in this gallery yet!<p>
 			{% endfor %}
 		</div>
 
