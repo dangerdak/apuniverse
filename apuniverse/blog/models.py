@@ -11,6 +11,7 @@ from blog.managers import PublishedManager
 
 
 class Post(models.Model):
+    verbose_name = 'blog post'
     # MANAGERS
     objects = models.Manager()
     published_objects = PublishedManager()
@@ -33,7 +34,7 @@ class Post(models.Model):
 
     # METHODS
     def get_absolute_url(self):
-        # TODO Hardcoded url in model!!
+        # TODO Sort of hardcoded url in model?
         date = (self.pub_date.strftime('%Y %b')).lower().split()
         return "/blog/%s/%s/%s" % (date[0],
                                    date[1],
@@ -64,3 +65,4 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-pub_date']
+        verbose_name = 'blog post'
