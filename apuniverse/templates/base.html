@@ -4,27 +4,36 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock title %} | Annie Potter's Universe | Art, Craft & Teaching</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Le styles -->
     <!-- This file store project specific CSS -->
+    <link href="{% static 'css/normalize.css' %}" rel="stylesheet">
     <link href="{% static 'css/apuniverse.css' %}" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+		{% block extra_css %}{% endblock extra_css %}
+		<!--[if IE]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		{% block extrahead %}{% endblock extrahead %}
   </head>
 
   <body>
 
-		<a class="navbar-title" href="{% url 'home' %}">Annie Potter's Universe</a>
-		<ul class="navbar">
-			<li><a href="{% url 'home' %}">Home</a></li>
-			<li><a href="{% url 'new' %}">What's New</a></li>
-			<li><a href="{% url 'galleries' %}">Galleries</a></li>
-			<li><a href="{% url 'blog' %}">Blog</a></li>
-			<li><a href="{% url 'about' %}">About Annie</a></li>
-			<li><a href="{% url 'contact-form' %}">Contact</a></li>
-		</ul>
+	<header>
+			<a class="logo" href="{% url 'home' %}">Annie Potter's Universe</a>
+		<nav id="main-nav" class="clearfix">
+			<ul class="clearfix">
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<li><a href="{% url 'new' %}">What's New</a></li>
+				<li><a href="{% url 'galleries' %}">Galleries</a></li>
+				<li><a href="{% url 'blog' %}">Blog</a></li>
+				<li><a href="{% url 'about' %}">About Annie</a></li>
+				<li><a href="{% url 'contact-form' %}">Contact</a></li>
+			</ul>
+			<a href=# id="menu-icon"><i class="icon-reorder"></i></a>
+		</nav>
+	</header>
 
     <div class="container">
 
@@ -45,5 +54,6 @@
 		<script src="{% static "endless_pagination/js/endless-pagination.js" %}"></script>
 		<!-- Required for endless pagination and thumbnail click-through -->	
     <script src="{% static 'js/apuniverse.js' %}"></script>
+    <script src="{% static 'js/menu.js' %}"></script>
   </body>
 </html>

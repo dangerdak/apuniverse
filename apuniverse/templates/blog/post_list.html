@@ -1,28 +1,47 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load taggit_extras %}
 
 {% block title %}Blog{% endblock title %}
 
 {% block page_title %}Welcome to My Blog{% endblock page_title %}
+{% block extra_css %}
+<link href="{% static 'css/col.css' %}" rel="stylesheet" />
+<link href="{% static 'css/cols3.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
 
 {% block content %}
 
-	{% get_taglist as all_blog_tags for 'Blog' %}
-	<ul>
-		{% for tag in all_blog_tags %}
-		<li><a href="{% url 'blogtags' tag.slug %} ">{{ tag }} ({{ tag.num_times }})</a></li>
-		{% endfor %}
-	</ul>
+	<nav>
+		{% get_taglist as all_blog_tags for 'Blog' %}
+		<ul>
+			{% for tag in all_blog_tags %}
+			<li><a href="{% url 'blogtags' tag.slug %} ">{{ tag }} ({{ tag.num_times }})</a></li>
+			{% endfor %}
+		</ul>
+	</nav>
 
-	{% for post in post_list %}
-	<a href="{{ post.url }}">
-		<div class="post">
-			<h2>{{ post.title }}
-				({% for tag in post.tags.names %}{{ tag }} {% endfor %})</h2>
-			{{ post.pub_date }}</br>
-			{{ post.text|safe|truncatewords_html:50 }}
+	<div class="section group">
+		<div class="col span_2_of_3">
+			{% for post in post_list %}
+			<a href="{{ post.url }}">
+				<div class="post">
+					<h2>{{ post.title }}
+						({% for tag in post.tags.names %}{{ tag }} {% endfor %})</h2>
+					{{ post.pub_date }}</br>
+					{{ post.text|safe|truncatewords_html:50 }}
+				</div>
+			</a>
+			{% endfor %}
 		</div>
-	</a>
-	{% endfor %}
+		<div class="col span_1_of_3">
+			<p>Archive links here</p>
+			<p>Archive links here</p>
+			<p>Archive links here</p>
+			<p>Archive links here</p>
+			<p>Archive links here</p>
+			<p>Archive links here</p>
+		</div>
+	</div>
 
 {% endblock content %}

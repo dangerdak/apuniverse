@@ -1,1 +1,122 @@
-/*! project specific CSS goes here. */
+body {
+	background: #9aa2a6;
+}
+
+#main-nav {
+	height: 60px;
+	width: 100%;
+	background: #fff;
+	position: fixed;
+	top: 0;
+	border-bottom: 2px dashed #383635;
+}
+#main-nav ul {
+	padding: 0;
+	margin: 0 auto;
+	width: 660px;
+	height: 60px;
+}
+#main-nav li {
+	display: inline;
+	float: left;
+}
+#main-nav a {
+	color: #383635;
+	display: inline-block;
+	width: 110px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 60px;
+}
+#main-nav li a {
+	border-right: 1px solid #383635;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#main-nav li:last-child a {
+	border-right: 0;
+}
+a#menu-icon {
+	display: none;
+}
+
+/** MEDIA QUERIES **/
+@media screen and (max-width: 660px) {
+	#main-nav {
+		height: auto;
+	}
+	#main-nav ul {
+		width: 100%;
+		display: block;
+		height: auto;
+	}
+	#main-nav li {
+		width: 33.33333%;
+		float: left;
+		position: relative;
+	}
+	#main-nav li a {
+		border-bottom: 1px solid #383635;
+		border-right: 1px solid #383635;
+	}
+	#main-nav a {
+		text-align: left;
+		width: 100%;
+		text-indent: 10px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#main-nav {
+		border-bottom: 0;
+	}
+	#main-nav ul {
+		display: none;
+		height: auto;
+	}
+	#main-nav li {
+		width: 33.333333%;
+	}
+	#main-nav a#menu-icon {
+		display: block;
+		width: 100%;
+		position: relative;
+		font-size: 2em;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	#main-nav li {
+		width: 50%;
+	}
+}
+
+
+/** CLEARFIX **/
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+    *zoom: 1;
+}
