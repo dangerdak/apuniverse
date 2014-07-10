@@ -1,5 +1,5 @@
 body {
-	background: #9aa2a6;
+	background: #dcdfdf;
 }
 
 #main-nav {
@@ -8,7 +8,7 @@ body {
 	background: #fff;
 	position: fixed;
 	top: 0;
-	border-bottom: 2px dashed #383635;
+	border-bottom: 1px dashed #383635;
 }
 #main-nav ul {
 	padding: 0;
@@ -28,11 +28,10 @@ body {
 	text-decoration: none;
 	line-height: 60px;
 }
+#main-nav a:hover {
+	font-weight: bold;
+}
 #main-nav li a {
-	border-right: 1px solid #383635;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
 }
 #main-nav li:last-child a {
 	border-right: 0;
