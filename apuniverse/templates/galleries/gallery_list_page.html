@@ -3,11 +3,11 @@
 
 {% lazy_paginate 2 gallery_list %}
 {% for gallery in gallery_list %}
-<div class="gallery">
+<section class="gallery  col  span_6_of_6">
 	<h2>{{ gallery.title }}
 				({% for tag in gallery.tags.names %}{{ tag }} {% endfor %})</h2>
 
-		<div class="thumbnails">
+		<div class="thumbnails col span_1_of_3">
 			{% for image in gallery.image_list %}
 				<img src="{% cropped_thumbnail image "thumbnail" %}"
 				class="thumbnail"
@@ -18,9 +18,9 @@
 			{% endfor %}
 		</div>
 
-		<div class="large-image">
+		<div class="large-image col span_1_of_3">
 			<img src="" alt="Click on a thumbnail to enlarge"/>
 		</div>
-	</div>
+</section>
 {% endfor %}
 {% show_more %}

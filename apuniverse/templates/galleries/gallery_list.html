@@ -5,18 +5,21 @@
 {% block title %}Galleries{% endblock title %}
 
 {% block extrahead %}
-<link rel="stylesheet" href="{% static "galleries/gallery_list.css" %}">
 {% endblock extrahead %}
-{% block page_title %}Welcome to My Gallery{% endblock page_title %}
+{% block page_title %}galleries{% endblock page_title %}
 
 {% block content %}
 
-	{% get_taglist as all_galleries_tags for 'Galleries' %}
-	<ul>
-		{% for tag in all_galleries_tags %}
-		<li><a href="{% url 'galleriestags' tag.slug %}">{{ tag }} ({{ tag.num_times }})</a></li>
-		{% endfor %}
-	</ul>
-	{% include "galleries/gallery_list_page.html" %}
+	<nav class="nav-tags  tags  col  span_1_of_3">
+		{% get_taglist as all_galleries_tags for 'Galleries' %}
+			<ul>
+				{% for tag in all_galleries_tags %}
+					<li><a href="{% url 'galleriestags' tag.slug %}">{{ tag }} ({{ tag.num_times }})</a></li>
+				{% endfor %}
+			</ul>
+	</nav>
+	<div class="section  group">
+		{% include "galleries/gallery_list_page.html" %}
+	</div>
 
 	{% endblock content %}

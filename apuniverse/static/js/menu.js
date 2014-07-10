@@ -1,6 +1,6 @@
 $(function() {
-	var menuIcon = $('#menu-icon');
-	var menu = $('#main-nav ul');
+	var menuIcon = $('.menu-icon');
+	var menu = $('.main-nav ul');
 	var menuHeight = menu.height();
 
 	$(menuIcon).bind('click', function(e) {

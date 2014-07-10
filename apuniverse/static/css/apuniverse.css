@@ -1,65 +1,95 @@
 body {
-	background: #dcdfdf;
-}
-
-#main-nav {
-	height: 60px;
+	background-image: url('../images/background-q.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #383635;
 	width: 100%;
-	background: #fff;
-	position: fixed;
+}
+body a {
+	color: #383635;
+}
+header {
+	position: relative;
 	top: 0;
 	border-bottom: 1px dashed #383635;
 }
-#main-nav ul {
-	padding: 0;
+.logo {
+	background-color: #fff;
+	height: 5em;
+	overflow: hidden;
+	border-bottom: 1px dashed #383635;
+}
+.logo img {
+	display: block;
 	margin: 0 auto;
-	width: 660px;
-	height: 60px;
 }
-#main-nav li {
-	display: inline;
-	float: left;
+.logo-full {
+	min-width: 600px;
 }
-#main-nav a {
+.main-nav {
+	line-height: 1em;
+	font-size: 2.5em;
+	font-family: 'Just Me Again Down Here', serif;
+	background-color: rgb(255, 255, 255); /* Fall back opaque background */
+	background-color: rgba(255, 255, 255, 0.5);
+}
+.main-nav ul {
+	list-style: none;
+	padding: 0;
+	display: block;
+	margin: 0 auto;
+	height: 100%;
+	text-align: center;
+}
+.main-nav li {
+	width: 15%;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+.main-nav a {
+	width: 100%;
 	color: #383635;
 	display: inline-block;
-	width: 110px;
 	text-align: center;
 	text-decoration: none;
-	line-height: 60px;
+	-moz-box-sizing:border-box;  
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;  
 }
-#main-nav a:hover {
-	font-weight: bold;
+.main-nav a:hover {
+	color: #605E5D;
+	text-shadow: 0 0 1em #FFAA00,
+		     0 0 2em #FFAA00;
 }
-#main-nav li a {
-}
-#main-nav li:last-child a {
+.main-nav li:last-child a {
 	border-right: 0;
 }
-a#menu-icon {
+.main-nav .menu-icon {
 	display: none;
 }
 
 /** MEDIA QUERIES **/
 @media screen and (max-width: 660px) {
-	#main-nav {
+	.main-nav {
 		height: auto;
 	}
-	#main-nav ul {
+	.main-nav ul {
 		width: 100%;
 		display: block;
 		height: auto;
 	}
-	#main-nav li {
+	.main-nav li {
 		width: 33.33333%;
 		float: left;
 		position: relative;
 	}
-	#main-nav li a {
+	.main-nav li a {
 		border-bottom: 1px solid #383635;
 		border-right: 1px solid #383635;
 	}
-	#main-nav a {
+	.main-nav a {
 		text-align: left;
 		width: 100%;
 		text-indent: 10px;
@@ -67,17 +97,17 @@ a#menu-icon {
 }
 
 @media only screen and (max-width: 600px) {
-	#main-nav {
+	.main-nav {
 		border-bottom: 0;
 	}
-	#main-nav ul {
+	.main-nav ul {
 		display: none;
 		height: auto;
 	}
-	#main-nav li {
+	.main-nav li {
 		width: 33.333333%;
 	}
-	#main-nav a#menu-icon {
+	.main-nav a.menu-icon {
 		display: block;
 		width: 100%;
 		position: relative;
@@ -86,36 +116,89 @@ a#menu-icon {
 }
 
 @media only screen and (max-width: 480px) {
-	#main-nav li {
+	.main-nav li {
 		width: 50%;
 	}
 }
 
 
-/** CLEARFIX **/
-/**
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    contenteditable attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that are clearfixed.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-.clearfix:before,
-.clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+
+
+
+
+/******************************************/
+/******************************************/
+
+.maincontent {
+	margin: 0 auto;
+}
+h1 {
+	font-family: 'Just Me Again Down Here', serif;
+	float: left;
+	margin-left: 0.5em;
+}
+.nav-tags {
+	margin-right: 0.5em;
+	float: right;
 }
 
-.clearfix:after {
-    clear: both;
+.tags a, .post-snippet .tags {
+	color: #489074;
+	font-size: 0.8em;
+}
+.tags ul {
+	list-style: none;
+}
+.nav-tags li, .nav-tags ul {
+	float: right;
+}
+.post-snippet {
+	-moz-box-sizing:border-box;  
+	-webkit-box-sizing:border-box;
+	box-sizing: border-box;
+	background-color: rgb(255, 255, 255); /* Fall back opaque background */
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 2px solid #f3A890;
+	border-radius: 3px;
+	margin: 0 auto 2em auto;
+	padding: 0 1em;
+	display: block;
+}
+.post-snippet:hover {
+	border: 2px solid #73AC97;
+	box-shadow: 0.2em 0.2em 0.5em #485054;
+}
+.post-snippet:hover .tags {
+	color: #73AC97;
 }
 
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.clearfix {
-    *zoom: 1;
+.post-snippet .tags {
+	display: inline-block;
+}
+
+
+
+
+
+
+/******************************************/
+/******************************************/
+.large-image {
+	background: lightblue;
+	display: inline-block;
+	vertical-align: top;
+	overflow: hidden;
+}
+.large-image img {
+	max-height: 100%;
+	max-width: 100%;
+}
+.thumbnails {
+	padding: 0;
+	display: inline-block;
+}
+.thumbnail {
+	float: left;
+	margin: 5px;
+	padding: 0;
 }

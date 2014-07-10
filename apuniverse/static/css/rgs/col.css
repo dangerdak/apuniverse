@@ -1,9 +1,10 @@
+
 /*  SECTIONS  ============================================================================= */
 
 .section {
 	clear: both;
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0px;
 }
 
 /*  GROUPING  ============================================================================= */
@@ -36,6 +37,6 @@
 
 @media only screen and (max-width: 480px) {
 	.col { 
-		margin: 1% 0 1% 0;
+		margin: 1% 0 1% 0%;
 	}
 }
