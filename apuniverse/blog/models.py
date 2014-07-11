@@ -1,5 +1,6 @@
 from datetime import timedelta
 
+from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django.db import models
 from django.template.defaultfilters import slugify
@@ -34,11 +35,10 @@ class Post(models.Model):
 
     # METHODS
     def get_absolute_url(self):
-        # TODO Sort of hardcoded url in model?
-        date = (self.pub_date.strftime('%Y %b')).lower().split()
-        return "/blog/%s/%s/%s" % (date[0],
-                                   date[1],
-                                   self.slug)
+        year, month = (self.pub_date.strftime('%Y %b')).lower().split()
+        return reverse('blog-detail', kwargs={'pub_year': year,
+                                              'pub_month': month,
+                                              'slug': self.slug})
 
     def save(self, *args, **kwargs):
         status = self.status
