@@ -6,7 +6,27 @@ from taggit.models import Tag
 from blog.models import Post
 
 
-class PostListView(ListView):
+class MonthArchiveMixin(object):
+
+    def get_context_data(self, **kwargs):
+        qs = self.get_queryset()
+        try:
+            posts = qs.filter(pub_date__year=self.kwargs['year'])
+        except KeyError:
+            posts = qs.filter(pub_date__year=2014)
+        context = super(MonthArchiveMixin, self).get_context_data(**kwargs)
+        all_dates = posts.datetimes('pub_date', 'month', 'DESC')
+        by_month = []
+        for date in all_dates:
+            # Posts for each month
+            # ordered by pub_date (see model meta class)
+            month = date.month
+            by_month.append((date, posts.filter(pub_date__month=month)))
+        context['by_month'] = by_month
+        return context
+
+
+class PostListView(MonthArchiveMixin, ListView):
     model = Post
 
     def get_context_data(self, **kwargs):
@@ -24,26 +44,12 @@ class PostListView(ListView):
         return context
 
 
-class PostYearArchiveView(YearArchiveView):
+class PostYearArchiveView(MonthArchiveMixin, YearArchiveView):
     model = Post
     date_field = 'pub_date'
     make_object_list = True
     allow_empty = True
     allow_future = False
-
-    def get_context_data(self, **kwargs):
-        posts = Post.published_objects.all()
-        context = super(PostYearArchiveView, self).get_context_data(**kwargs)
-        all_dates = posts.datetimes('pub_date', 'month', 'DESC')
-        by_month = []
-        for date in all_dates:
-            # Posts for each month
-            # ordered by pub_date (see model meta class)
-            month = date.month
-            by_month.append((date, posts.filter(pub_date__month=month)))
-        context['by_month'] = by_month
-
-        return context
 
 
 class PostMonthArchiveView(MonthArchiveView):
