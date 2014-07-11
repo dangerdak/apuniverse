@@ -1,14 +1,52 @@
+/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
+/**
+ * CONTENTS............You’re reading it!
+ * RESETS.............. normalize.css
+ * GLOBAL..............
+ * LAYOUT..............
+ * NAVIGATION..........
+ * 
+ */
+
+
+
+
+
+/*------------------------------------*\
+    $GLOBAL
+\*------------------------------------*/
+
 body {
-	background-image: url('../images/background-q.jpg');
+	background-image: url(../images/background-no-bright.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	color: #383635;
 	width: 100%;
 }
+
 body a {
 	color: #383635;
 }
+
+
+
+
+
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+
+
+
+
+
+
+/*------------------------------------*\
+    $NAVBAR
+\*------------------------------------*/
 header {
 	position: relative;
 	top: 0;

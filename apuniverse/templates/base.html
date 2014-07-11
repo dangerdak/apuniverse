@@ -12,12 +12,13 @@
     <!-- This file store project specific CSS -->
     <link href="{% static 'css/normalize.css' %}" rel="stylesheet">
     <link href="{% static 'css/rgs/col.css' %}" rel="stylesheet">
-		<link href="{% static 'css/rgs/3cols.css' %}" rel="stylesheet" />
+		<link href="{% static 'css/rgs/3cols.css' %}" rel="stylesheet">
+		<link href="{% static 'css/rgs/5cols.css' %}" rel="stylesheet">
     <link href="{% static 'css/rgs/6cols.css' %}" rel="stylesheet">
     <link href="{% static 'css/rgs/8cols.css' %}" rel="stylesheet">
-    <link href="{% static 'css/apuniverse.css' %}" rel="stylesheet">
+    <link href="{% static 'css/apuniverse1.css' %}" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-		<link href='http://fonts.googleapis.com/css?family=Reenie+Beanie|Just+Me+Again+Down+Here|Dawning+of+a+New+Day|Meddon' rel='stylesheet' type='text/css'>
+		<link href='//fonts.googleapis.com/css?family=Reenie+Beanie|Just+Me+Again+Down+Here|Dawning+of+a+New+Day|Meddon' rel='stylesheet' type='text/css'>
 		{% block extra_css %}{% endblock extra_css %}
 		<!--[if IE]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		{% block extrahead %}{% endblock extrahead %}
@@ -28,14 +29,14 @@
 	<header>
 		<div class="logo  section  group">
 			<img class="logo-full  span_3_of_6"
-				src="{% static 'images/apu-banner.png' %}" />
+				src="{% static 'images/apu-banner.png' %}"
+				alt="Annie Potter's Universe">
 		</div>
 		<nav class="main-nav  section  group">
 			<ul class="span_4_of_6">
 				<li><a href="{% url 'home' %}">home</a></li>
-				<li><a href="{% url 'new' %}">what's new</a></li>
-				<li><a href="{% url 'blog' %}">blog</a></li>
 				<li><a href="{% url 'galleries' %}">galleries</a></li>
+				<li><a href="{% url 'blog' %}">blog</a></li>
 				<li><a href="{% url 'about' %}">about annie</a></li>
 				<li><a href="{% url 'contact-form' %}">contact</a></li>
 			</ul>
