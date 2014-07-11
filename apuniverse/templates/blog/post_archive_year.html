@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block page_title %}
+blog archive
+{% endblock page_title %}
+{% block content %}
+
+<div>
+    <h2>{{ year|date:"Y" }}</h2>
+		<ul>
+		{% for month, post_list in by_month %}
+			<li>{{ month|date:"F" }}</p>
+			<ul>
+			{% for post in post_list %}
+			<a href="{{ post.get_absolute_url }}">
+				<li>{{ post.title }}<span class="tags">{{ post.tags.names }}</span></li>
+			</a>
+			{% endfor %}
+			</ul>
+		{% endfor %}
+		</ul>
+</div>
+{% endblock content %}

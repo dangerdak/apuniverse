@@ -1,5 +1,6 @@
 from django.views.generic import ListView
-from django.shortcuts import get_object_or_404
+from django.views.generic.dates import YearArchiveView, MonthArchiveView
+from django.shortcuts import get_object_or_404, get_list_or_404
 from taggit.models import Tag
 
 from blog.models import Post
@@ -21,6 +22,36 @@ class PostListView(ListView):
             })
 
         return context
+
+
+class PostYearArchiveView(YearArchiveView):
+    model = Post
+    date_field = 'pub_date'
+    make_object_list = True
+    allow_empty = True
+    allow_future = False
+
+    def get_context_data(self, **kwargs):
+        posts = Post.published_objects.all()
+        context = super(PostYearArchiveView, self).get_context_data(**kwargs)
+        all_dates = posts.datetimes('pub_date', 'month', 'DESC')
+        by_month = []
+        for date in all_dates:
+            # Posts for each month
+            # ordered by pub_date (see model meta class)
+            month = date.month
+            by_month.append((date, posts.filter(pub_date__month=month)))
+        context['by_month'] = by_month
+
+        return context
+
+
+class PostMonthArchiveView(MonthArchiveView):
+    queryset = Post.published_objects.all()
+    date_field = 'pub_date'
+    make_object_list = True
+    allow_empty = True
+    allow_future = False
 
 
 class PostListByTag(ListView):
