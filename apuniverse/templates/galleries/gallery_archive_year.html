@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block page_title %}
+gallery archive
+{% endblock page_title %}
+{% block content %}
+
+<div>
+    <h2>{{ year|date:"Y" }}</h2>
+		<ul>
+		{% for month, gallery_list in by_month %}
+		<li>{{ month|date:"F" }} ({{ gallery_list|length }})</p>
+			<ul>
+			{% for gallery in gallery_list %}
+			<a href="{{ gallery.get_absolute_url }}">
+				<li>{{ gallery.title }}<span class="tags">{{ gallery.tags.names }}</span></li>
+			</a>
+			{% endfor %}
+			</ul>
+		{% endfor %}
+</div>
+{% endblock content %}

@@ -10,6 +10,14 @@
 
 {% block content %}
 
+	<ul>
+		{% for year, count in archive_links %}
+		<a href="{% url "gallery_year_archive" year %}">
+			<li>{{ year }} ({{ count }})</li>
+		</a>
+		{% endfor %}
+	</ul>
+
 	<nav class="nav-tags  tags  col  span_1_of_3">
 		{% get_taglist as all_galleries_tags for 'Galleries' %}
 			<ul>
