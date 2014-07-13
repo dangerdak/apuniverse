@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.dates import YearArchiveView
 from django.shortcuts import get_object_or_404
 from taggit.models import Tag
@@ -47,6 +47,22 @@ class PostListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
+        # Add archive links to context
+        all_year_dates = self.queryset.datetimes('pub_date', 'year', 'DESC')
+        archive_links = []
+        for date in all_year_dates:
+            year = date.year
+            year_count = self.queryset.filter(pub_date__year=year).count()
+            archive_links.append((year, year_count))
+        context['archive_links'] = archive_links
+        return context
+
+
+class PostDetailView(DetailView):
+    queryset = Post.published_objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
         # Add archive links to context
         all_year_dates = self.queryset.datetimes('pub_date', 'year', 'DESC')
         archive_links = []

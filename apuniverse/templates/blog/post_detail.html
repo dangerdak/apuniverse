@@ -5,9 +5,19 @@
 {% block page_title %}{% endblock page_title %}
 
 {% block content %}
+
+	<ul>
+		{% for year, count in archive_links %}
+		<a href="{% url "post_year_archive" year %}">
+			<li>{{ year }} ({{ count }})</li>
+		</a>
+		{% endfor %}
+	</ul>
+
 	<div class='post-detail'>
 		<h1>{{ object.title }}</h1>
 		<p>Last modified: {{ object.last_modified }}</p>
 		{{ object.text|safe }}
 	</div>
+
 {% endblock content %}
