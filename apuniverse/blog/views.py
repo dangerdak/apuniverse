@@ -1,5 +1,5 @@
 from django.views.generic import ListView
-from django.views.generic.dates import YearArchiveView, MonthArchiveView
+from django.views.generic.dates import YearArchiveView
 from django.shortcuts import get_object_or_404
 from taggit.models import Tag
 
@@ -43,10 +43,11 @@ class MonthArchiveMixin(object):
 
 
 class PostListView(ListView):
-    queryset = Post.objects.all()
+    queryset = Post.published_objects.all()
 
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
+        # Add archive links to context
         all_year_dates = self.queryset.datetimes('pub_date', 'year', 'DESC')
         archive_links = []
         for date in all_year_dates:
@@ -59,14 +60,6 @@ class PostListView(ListView):
 
 class PostYearArchiveView(MonthArchiveMixin, YearArchiveView):
     model = Post
-    date_field = 'pub_date'
-    make_object_list = True
-    allow_empty = True
-    allow_future = False
-
-
-class PostMonthArchiveView(MonthArchiveView):
-    queryset = Post.published_objects.all()
     date_field = 'pub_date'
     make_object_list = True
     allow_empty = True

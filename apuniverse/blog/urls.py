@@ -4,7 +4,6 @@ from django.views.generic import DetailView
 from blog.models import Post
 from blog.views import (PostListView,
                         PostYearArchiveView,
-                        PostMonthArchiveView,
                         PostListByTag)
 
 urlpatterns = patterns('',
@@ -18,12 +17,6 @@ urlpatterns = patterns('',
     url(r'^(?P<pub_year>\d{4})/(?P<pub_month>\w{3})/(?P<slug>[a-zA-Z0-9-]+)/$',
         DetailView.as_view(model=Post,),
         name='blog-detail',
-        ),
-
-    # Monthly archive view
-    url(r'^(?P<year>\d{4})/(?P<month>\w{3})/$',
-        PostMonthArchiveView.as_view(),
-        name='post_month_archive'
         ),
 
     # Yearly archive view
