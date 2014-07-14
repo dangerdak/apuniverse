@@ -1,10 +1,31 @@
 {% extends "base.html" %}
+{% load taggit_extras %}
 
 {% block title %}Blog Entry{% endblock title %}
 
-{% block page_title %}{% endblock page_title %}
+{% block page_title %}
+BLOG!
+{% endblock page_title %}
 
-{% block content %}
+{% block category_links %}
+
+<div>
+	<nav>
+		{% get_taglist as all_tags %}
+		<ul>
+			{% for tag in all_tags %}
+			<a href="{% url 'blogtags' tag.slug %} ">
+				<li>{{ tag }} ({{ tag.num_times }})</li>
+			</a>
+			{% endfor %}
+		</ul>
+	</nav>
+</div>
+
+{% endblock category_links %}
+
+
+{% block archive_links %}
 
 	<ul>
 		{% for year, count in archive_links %}
@@ -14,10 +35,15 @@
 		{% endfor %}
 	</ul>
 
-	<div class='post-detail'>
-		<h1>{{ object.title }}</h1>
-		<p>Last modified: {{ object.last_modified }}</p>
+{% endblock archive_links %}
+
+
+{% block content %}
+
+	<article>
+		<h2>{{ object.title }}</h2>
+		<p>{{ object.pub_date }}</p>
 		{{ object.text|safe }}
-	</div>
+	</article>
 
 {% endblock content %}
