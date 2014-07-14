@@ -6,9 +6,9 @@ urlpatterns = patterns('',
         # Form
         url(r'^$',
             'contact.views.contact',
-            name='contact-form'),
+            name='contact_form'),
 
         url(r'^thanks/$',
             TemplateView.as_view(template_name='contact/thanks.html'),
-            name='contact-thanks'),
+            name='contact_thanks'),
 )
