@@ -2,17 +2,21 @@
 
 {% block title %}Contact{% endblock title %}
 
-{% block page_title %}Contact Annie{% endblock page_title %}
+{% block page_title %}
+CONTACT ANNIE!
+{% endblock page_title %}
 {% block extrahead %}
 {{ form.media }}
 {% endblock extrahead %}
 
 {% block content %}
+<div class="contact-page">
 <p>Email: anniepotter@email.com</p>
-<p>Or use the contact form:</p>
+<p>Or use the contact form -</p>
 	<form action="/contact/" method="post">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="Send" />
 	</form>
+</div>
 {% endblock content %}
