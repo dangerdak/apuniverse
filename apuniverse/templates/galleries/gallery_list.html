@@ -2,13 +2,32 @@
 {% load staticfiles %}
 {% load taggit_extras %}
 
+
 {% block title %}Galleries{% endblock title %}
 
-{% block extrahead %}
-{% endblock extrahead %}
-{% block page_title %}galleries{% endblock page_title %}
 
-{% block content %}
+{% block page_title %}
+GALLERIES!
+{% endblock page_title %}
+
+
+{% block category_links %}
+
+	<nav>
+		{% get_taglist as all_galleries_tags for 'Galleries' %}
+			<ul>
+				{% for tag in all_galleries_tags %}
+				<a href="{% url 'galleriestags' tag.slug %}">
+					<li>{{ tag }} ({{ tag.num_times }})</li>
+				</a>
+				{% endfor %}
+			</ul>
+	</nav>
+
+{% endblock category_links %}
+
+
+{% block archive_links %}
 
 	<ul>
 		{% for year, count in archive_links %}
@@ -18,16 +37,13 @@
 		{% endfor %}
 	</ul>
 
-	<nav class="nav-tags  tags  col  span_1_of_3">
-		{% get_taglist as all_galleries_tags for 'Galleries' %}
-			<ul>
-				{% for tag in all_galleries_tags %}
-					<li><a href="{% url 'galleriestags' tag.slug %}">{{ tag }} ({{ tag.num_times }})</a></li>
-				{% endfor %}
-			</ul>
-	</nav>
-	<div class="section  group">
+{% endblock archive_links %}
+
+
+{% block content %}
+
+	<div>
 		{% include "galleries/gallery_list_page.html" %}
 	</div>
 
-	{% endblock content %}
+{% endblock content %}

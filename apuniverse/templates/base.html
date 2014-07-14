@@ -12,10 +12,14 @@
     <!-- This file store project specific CSS -->
     <link href="{% static 'css/normalize.css' %}" rel="stylesheet">
     <link href="{% static 'css/rgs/col.css' %}" rel="stylesheet">
+		<link href="{% static 'css/rgs/2cols.css' %}" rel="stylesheet">
 		<link href="{% static 'css/rgs/3cols.css' %}" rel="stylesheet">
+		<link href="{% static 'css/rgs/4cols.css' %}" rel="stylesheet">
 		<link href="{% static 'css/rgs/5cols.css' %}" rel="stylesheet">
     <link href="{% static 'css/rgs/6cols.css' %}" rel="stylesheet">
+    <link href="{% static 'css/rgs/7cols.css' %}" rel="stylesheet">
     <link href="{% static 'css/rgs/8cols.css' %}" rel="stylesheet">
+    <link href="{% static 'css/rgs/9cols.css' %}" rel="stylesheet">
     <link href="{% static 'css/apuniverse1.css' %}" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 		<link href='//fonts.googleapis.com/css?family=Reenie+Beanie|Just+Me+Again+Down+Here|Dawning+of+a+New+Day|Meddon' rel='stylesheet' type='text/css'>
@@ -26,34 +30,50 @@
 
   <body>
 
-	<header>
-		<div class="logo  section  group">
-			<img class="logo-full  span_3_of_6"
+	<header class="section  group">
+		<div class="logo">
+			<img 
 				src="{% static 'images/apu-banner.png' %}"
 				alt="Annie Potter's Universe">
-		</div>
-		<nav class="main-nav  section  group">
-			<ul class="span_4_of_6">
-				<li><a href="{% url 'home' %}">home</a></li>
-				<li><a href="{% url 'galleries' %}">galleries</a></li>
-				<li><a href="{% url 'blog' %}">blog</a></li>
-				<li><a href="{% url 'about' %}">about annie</a></li>
-				<li><a href="{% url 'contact-form' %}">contact</a></li>
+			</div>
+		<nav class="nav-main section  group">
+			<ul class="span_4_of_5">
+				<a href="{% url 'home' %}"><li>home</li></a>
+				<a href="{% url 'galleries' %}"><li>galleries</li></a>
+				<a href="{% url 'blog' %}"><li>blog</li></a>
+				<a href="{% url 'about' %}"><li>about annie</li></a>
+				<a href="{% url 'contact-form' %}"><li>contact</li></a>
 			</ul>
 			<a href=# class="menu-icon"><i class="icon-reorder"></i></a>
 		</nav>
 	</header>
 
-	{% block tags %}
-	{% endblock tags %}
+	<div class="section  group">
+	<aside class="col  span_1_of_5">
 
-		<h1 class="col  span_1_of_8">{% block page_title %}Example Base Template{% endblock page_title %}</h1>
-    <div class="col  maincontent  span_6_of_8">
+	<h1 class="page-title">
+		{% block page_title %}{% endblock page_title %}
+	</h1>
+	<div class="links-box">
+		<h3>Categories</h3>
+		{% block category_links %}
+		{% endblock category_links %}
+	</div>
+	<div class="links-box">
+		<h3>Archive</h3>
+		{% block archive_links %}
+		{% endblock archive_links %}
+	</div>
+
+	</aside>
+
+    <div class="main-content  col  span_4_of_5">
 
       {% block content %}
       {% endblock content %}
 
     </div>
+	</div>
 
     <!-- Le javascript
     ================================================== -->
