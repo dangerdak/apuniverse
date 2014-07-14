@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic.dates import YearArchiveView
+from django.views.generic import DetailView
 # from django.db.models import Count
 
 from taggit.models import Tag
@@ -70,6 +71,10 @@ class GalleryListView(AjaxListView):
         context['archive_links'] = archive_links
 
         return context
+
+
+class GalleryDetailView(DetailView):
+    queryset = Gallery.published_objects.all()
 
 
 class GalleryYearArchiveView(MonthArchiveMixin, YearArchiveView):

@@ -6,6 +6,7 @@ $('.gallery').each(function() {
 	var gallery = $(this);
 	var thumbs = gallery.find('.thumbnail');
 	var largeImage = gallery.find('.large-image img');
+	var imageTitle = gallery.find('.image-title');
 
 	thumbs.bind('click', largeImage, function() {
 		var url = $(this).attr('data-url');
@@ -13,6 +14,7 @@ $('.gallery').each(function() {
 		var alt = $(this).attr('alt').split(' ').slice(0,-1).join(' ');
 		largeImage.attr('src', url);
 		largeImage.attr('alt', alt);
+		imageTitle.text(alt);
 
 		// Clear all thumbnail borders...
 		thumbs.css('border', '');

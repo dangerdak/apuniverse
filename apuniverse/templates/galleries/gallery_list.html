@@ -7,7 +7,7 @@
 
 
 {% block page_title %}
-GALLERIES!
+GALLERIES
 {% endblock page_title %}
 
 
@@ -25,19 +25,6 @@ GALLERIES!
 	</nav>
 
 {% endblock category_links %}
-
-
-{% block archive_links %}
-
-	<ul>
-		{% for year, count in archive_links %}
-		<a href="{% url "gallery_year_archive" year %}">
-			<li>{{ year }} ({{ count }})</li>
-		</a>
-		{% endfor %}
-	</ul>
-
-{% endblock archive_links %}
 
 
 {% block content %}

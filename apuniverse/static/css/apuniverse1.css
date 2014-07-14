@@ -59,7 +59,6 @@ aside ul, nav ul {
 /* SIDEBAR */
 .links-box {
 	box-sizing: border-box;
-	background-color: #fff;
 	padding: 1em;
 	margin: 1em 0;
 	font-size: 0.8em;
@@ -71,7 +70,7 @@ aside ul, nav ul {
 }
 
 .page-title {
-	text-align: center;
+	text-align: left;
 	width: 100%;
 }
 /* HEADER */
@@ -96,6 +95,9 @@ nav {
 	font-size: 2.4em;
 	line-height: 1em;
 	z-index: 300;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.5);
+	/*
 	background: repeating-linear-gradient(
   to right,
   #e6dfdf,
@@ -103,6 +105,7 @@ nav {
   #fff 10px,
   #fff 20px
 	);
+	*/
 }
 
 .nav-main ul {
@@ -141,7 +144,6 @@ article,
 	box-sizing: border-box;
 	margin: 1em 0;
 	padding: 1em 2em;
-	background-color: #fff;
 }
 
 .nav-tags {
@@ -172,12 +174,27 @@ article,
 
 .thumbnails {
 	display: inline-block;
+	background-color: #fff;
+}
+
+.gallery-title {
+	text-align: left;
+}
+
+.image-detail {
+	text-align: right;
 }
 
 .large-image {
-	width: 45%;
+	height: 300px;
+	margin-right: 0;
 	float: right;
-	vertical-align: top;
+}
+
+.large-image img {
+	max-height: 100%;
+	max-width: 100%;
+	float: right;
 }
 
 
