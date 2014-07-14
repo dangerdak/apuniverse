@@ -29,6 +29,11 @@
   </head>
 
   <body>
+	{% url 'home' as home_url %}
+	{% url 'galleries' as galleries_url %}
+	{% url 'blog' as blog_url %}
+	{% url 'about' as about_url %}
+	{% url 'contact_form' as contact_form_url %}
 
 	<header class="section  group">
 		<div class="logo">
@@ -38,11 +43,26 @@
 			</div>
 		<nav class="nav-main section  group">
 			<ul class="span_4_of_5">
-				<a href="{% url 'home' %}"><li>home</li></a>
-				<a href="{% url 'galleries' %}"><li>galleries</li></a>
-				<a href="{% url 'blog' %}"><li>blog</li></a>
-				<a href="{% url 'about' %}"><li>about annie</li></a>
-				<a href="{% url 'contact-form' %}"><li>contact</li></a>
+				<a href="{{ home_url }}"
+					{% if request.path == home_url %} class="current" {% endif %}>
+					<li>home</li>
+				</a>
+				<a href="{{ galleries_url }}"
+					{% if request.path == galleries_url %} class="current" {% endif %}>
+					<li>galleries</li>
+				</a>
+				<a href="{{ blog_url }}"
+					{% if request.path == blog_url %} class="current" {% endif %}>
+					<li>blog</li>
+				</a>
+				<a href="{{ about_url }}"
+					{% if request.path == about_url %} class="current" {% endif %}>
+					<li>about annie</li>
+				</a>
+				<a href="{{ contact_form_url }}"
+					{% if request.path == contact_form_url %} class="current" {% endif %}>
+					<li>contact</li>
+				</a>
 			</ul>
 			<a href=# class="menu-icon"><i class="icon-reorder"></i></a>
 		</nav>
