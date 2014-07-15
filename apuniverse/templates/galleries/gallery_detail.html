@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load taggit_extras %}
+{% load cropping %}
+
+
+{% block title %}Galleries{% endblock title %}
+
+
+{% block page_title %}
+GALLERIES
+{% endblock page_title %}
+
+
+{% block category_links %}
+
+	<nav>
+		{% get_taglist as all_galleries_tags for 'Galleries' %}
+			<ul>
+				{% for tag in all_galleries_tags %}
+				<a href="{% url 'galleriestags' tag.slug %}">
+					<li>{{ tag }} ({{ tag.num_times }})</li>
+				</a>
+				{% endfor %}
+			</ul>
+	</nav>
+
+{% endblock category_links %}
+
+
+{% block content %}
+
+<article class="gallery  section  group">
+	<div class="image-detail  section  group">
+	<h2 class="gallery-title  col  span_1_of_5">{{ object.title }}</h2>
+		<p class="image-title  col  span_1_of_5"></p>
+	<div class="large-image  col  span_3_of_5">
+		<img src="" alt="Click on a thumbnail to enlarge"/>
+	</div>
+</div>
+<div class="thumbnails  section  group">
+	{% for image in object.image_set.all %}
+		<img src="{% cropped_thumbnail image "thumbnail" %}"
+			class="thumbnail"
+			alt="{{ image.title }} thumbnail"
+			data-url="{{ image.image.url }}">
+	{% endfor %}
+</div>
+</article>
+
+{% endblock content %}
