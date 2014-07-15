@@ -77,7 +77,7 @@ class Image(models.Model):
     medium = models.CharField(max_length=200, blank=True)
     size = models.CharField(max_length=50, blank=True)
     image = models.ImageField(upload_to='images/')
-    thumbnail = ImageRatioField('image', '100x100')
+    thumbnail = ImageRatioField('image', '100x100', free_crop=True)
 
     gallery = models.ForeignKey(Gallery)
     thumbnail_position = models.PositiveSmallIntegerField(

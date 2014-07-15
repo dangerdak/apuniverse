@@ -20,7 +20,7 @@
 \*------------------------------------*/
 
 body {
-	width: 80%;
+	width: 70%;
 	margin: auto;
 	background-image: url(../images/background-no-bright.jpg);
 	background-repeat: no-repeat;
@@ -31,6 +31,7 @@ body {
 
 a {
 	color: #383635;
+	text-decoration: none;
 }
 
 h1 {
@@ -174,7 +175,6 @@ article,
 
 .thumbnails {
 	display: inline-block;
-	background-color: #fff;
 }
 
 .gallery-title {
@@ -195,6 +195,18 @@ article,
 	max-height: 100%;
 	max-width: 100%;
 	float: right;
+}
+.thumbnail:nth-child(even) {
+	float: left;
+	margin: 6px;
+	-moz-transform: rotate(0.5deg);
+	-webkit-transform: rotate(0.5deg);
+}
+.thumbnail:nth-child(odd) {
+	float: left;
+	margin: 3px;
+	-moz-transform: rotate(-1deg);
+	transform: rotate(-1deg);
 }
 
 

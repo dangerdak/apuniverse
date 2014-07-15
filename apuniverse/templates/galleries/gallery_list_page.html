@@ -9,7 +9,7 @@
 
 		<div class="thumbnails">
 			{% for image in gallery.image_list %}
-				<img src="{% cropped_thumbnail image "thumbnail" %}"
+				<img src="{% cropped_thumbnail image "thumbnail" max_size=100x100 %}"
 				class="thumbnail"
 				alt="{{ image.title }} thumbnail"
 				data-url="{{ image.image.url }}"/>
