@@ -1,45 +1,6 @@
-{% extends "base.html" %}
+{% extends "base_blog.html" %}
+<!-- base_blog.html > base_generic.html > base.html -->
 {% load staticfiles %}
-{% load taggit_extras %}
-
-
-{% block title %}Blog{% endblock title %}
-
-
-{% block page_title %}
-BLOG!
-{% endblock page_title %}
-
-
-{% block category_links %}
-
-<div>
-	<nav>
-		{% get_taglist as all_tags %}
-		<ul>
-			{% for tag in all_tags %}
-			<a href="{% url 'blogtags' tag.slug %} ">
-				<li>{{ tag }} ({{ tag.num_times }})</li>
-			</a>
-			{% endfor %}
-		</ul>
-	</nav>
-</div>
-
-{% endblock category_links %}
-
-
-{% block archive_links %}
-
-	<ul>
-		{% for year, count in archive_links %}
-		<a href="{% url "post_year_archive" year %}">
-			<li>{{ year }} ({{ count }})</li>
-		</a>
-		{% endfor %}
-	</ul>
-
-{% endblock archive_links %}
 
 
 {% block content %}
@@ -54,6 +15,7 @@ BLOG!
 			{{ post.text|safe|truncatewords_html:100 }}
 			<p class="readmore"><a href="{{ post.get_absolute_url }}">...read more &#187</a></p>
 		</section>
+		<hr>
 	{% endfor %}
 
 {% endblock content %}

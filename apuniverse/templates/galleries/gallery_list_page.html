@@ -6,21 +6,34 @@
 <section class="gallery section group">
 	<h2>{{ gallery.title }}
 				({% for tag in gallery.tags.names %}{{ tag }} {% endfor %})</h2>
+			<div class="sub-heading"><a href=#>more info...</a></div>
 
 		<div class="thumbnails">
 			{% for image in gallery.image_list %}
-				<img src="{% cropped_thumbnail image "thumbnail" max_size=100x100 %}"
+			<a href="{{ image.image.url }}" class="gallerytest">
+				<img src="{% cropped_thumbnail image "thumbnail" scale=2 %}"
 				class="thumbnail"
 				alt="{{ image.title }} thumbnail"
 				data-url="{{ image.image.url }}"/>
+			</a>
 			{% empty %}
 					<p>There are no images in this gallery yet!<p>
 			{% endfor %}
 		</div>
-
-		<div class="large-image">
-			<img src="" alt="Click on a thumbnail to enlarge"/>
-		</div>
 </section>
 {% endfor %}
 {% show_more %}
+	<script>
+	$(function() {
+		$('a.gallerytest').colorbox({
+			maxWidth: '100%',
+			maxHeight: '100%',
+			scale: true,
+			rel: 'gal',
+			current: '{current}/{total}',
+			close: '<i class="icon-remove-sign icon-4x"></i>',
+			previous: '<i class="icon-chevron-left  icon-4x"></i>',
+			next: '<i class="icon-chevron-right  icon-4x"></i>',
+			});
+		});
+	</script>jkjkjdjkjk

@@ -22,10 +22,7 @@
 body {
 	width: 70%;
 	margin: auto;
-	background-image: url(../images/background-no-bright.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
+	background-color: #fff;
 	color: #383635;
 }
 
@@ -44,6 +41,7 @@ a:visited {
 
 h1 {
 	font-family: 'Just Me Again Down Here', serif;
+	padding: 0 1em;
 }
 
 h2 {
@@ -77,6 +75,15 @@ aside ul, nav ul {
 	text-decoration: none;
 	font-weight: normal;
 	margin: 0 0 1em 0;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+	background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 }
 
 
@@ -201,6 +208,7 @@ nav {
 .page-title {
 	text-align: left;
 	width: 100%;
+	margin: 0;
 }
 
 
@@ -213,6 +221,16 @@ nav {
 /*------------------------------------*\
     $GALLERIES
 \*------------------------------------*/
+
+.gallery-header li {
+	float: right;
+	padding: 0 1em;
+}
+
+.gallery {
+	min-height: 500px;
+	overflow: hidden;
+}
 
 .thumbnails {
 	display: inline-block;
@@ -240,14 +258,14 @@ nav {
 .thumbnail:nth-child(even) {
 	float: left;
 	margin: 6px;
-	-moz-transform: rotate(0.5deg);
-	-webkit-transform: rotate(0.5deg);
+/*	-moz-transform: rotate(0.5deg);
+	-webkit-transform: rotate(0.5deg);*/
 }
 .thumbnail:nth-child(odd) {
 	float: left;
 	margin: 3px;
-	-moz-transform: rotate(-1deg);
-	transform: rotate(-1deg);
+	/*-moz-transform: rotate(-1deg);
+	transform: rotate(-1deg);*/
 }
 
 

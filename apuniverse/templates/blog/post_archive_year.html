@@ -1,7 +1,6 @@
-{% extends "base.html" %}
-{% block page_title %}
-blog archive
-{% endblock page_title %}
+{% extends "base_blog.html" %}
+<!-- base_blog.html > base_generic.html > base.html -->
+
 {% block content %}
 
 <div>
@@ -18,4 +17,5 @@ blog archive
 			</ul>
 		{% endfor %}
 </div>
+
 {% endblock content %}

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 
     <!-- Le styles -->
     <!-- This file store project specific CSS -->
@@ -23,7 +24,6 @@
     <link href="{% static 'css/apuniverse1.css' %}" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 		<link href='//fonts.googleapis.com/css?family=Reenie+Beanie|Just+Me+Again+Down+Here|Dawning+of+a+New+Day|Meddon' rel='stylesheet' type='text/css'>
-		{% block extra_css %}{% endblock extra_css %}
 		<!--[if IE]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		{% block extrahead %}{% endblock extrahead %}
   </head>
@@ -68,31 +68,9 @@
 		</nav>
 	</header>
 
-	<div class="section  group">
-	<aside class="col  span_1_of_5">
-
-	<h1 class="page-title">
-		{% block page_title %}{% endblock page_title %}
-	</h1>
-	<div class="links-box">
-		<h3>Categories</h3>
-		{% block category_links %}
-		{% endblock category_links %}
-	</div>
-	<div class="links-box">
-		<h3>Archive</h3>
-		{% block archive_links %}
-		{% endblock archive_links %}
-	</div>
-
-	</aside>
-
-    <div class="main-content  col  span_4_of_5">
-
-      {% block content %}
-      {% endblock content %}
-
-    </div>
+	<div class="page-content  section  group">
+		{% block page_content %}
+		{% endblock page_content %}
 	</div>
 
     <!-- Le javascript
@@ -100,10 +78,11 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
     <!-- place project specific Javascript in this file -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="{% static "endless_pagination/js/endless-pagination.js" %}"></script>
 		<!-- Required for endless pagination and thumbnail click-through -->	
     <script src="{% static 'js/apuniverse.js' %}"></script>
     <script src="{% static 'js/menu.js' %}"></script>
+		{% block extrajs %}
+		{% endblock extrajs %}
   </body>
 </html>
