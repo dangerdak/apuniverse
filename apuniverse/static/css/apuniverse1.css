@@ -30,12 +30,36 @@ body {
 }
 
 a {
-	color: #383635;
+	color: #009bff;
 	text-decoration: none;
+}
+
+a:hover {
+	color: #00cbff;
+	text-decoration: underline;
+}
+a:visited {
+	color: #3040d0;
 }
 
 h1 {
 	font-family: 'Just Me Again Down Here', serif;
+}
+
+h2 {
+	margin: 0;
+}
+
+h2>a {
+	color: #383635;
+}
+
+h2>a:hover {
+	color: #686665;
+}
+
+h2>a:visited {
+	color: #282645;
 }
 
 aside ul, nav ul {
@@ -48,6 +72,13 @@ aside ul, nav ul {
 	display: none;
 }
 
+.sub-heading {
+	font-size: 0.7em;
+	text-decoration: none;
+	font-weight: normal;
+	margin: 0 0 1em 0;
+}
+
 
 
 
@@ -57,23 +88,34 @@ aside ul, nav ul {
     $LAYOUT
 \*------------------------------------*/
 
-/* SIDEBAR */
-.links-box {
+/* MAIN */
+.main-content section,
+article,
+.contact-page {
 	box-sizing: border-box;
-	padding: 1em;
 	margin: 1em 0;
+	padding: 1em 2em;
+	background-color: #fff;
+}
+
+.nav-tags {
+	margin-right: 0.5em;
+	float: right;
+}
+
+.tags a, .post-snippet .tags {
+	color: #489074;
 	font-size: 0.8em;
 }
 
-.links-box h3 {
-	padding: 0;
-	margin: 0;
+.tags ul {
+	list-style: none;
 }
 
-.page-title {
-	text-align: left;
-	width: 100%;
+.nav-tags li, .nav-tags ul {
+	float: right;
 }
+
 /* HEADER */
 .logo {
 	background-color: #fff;
@@ -109,6 +151,10 @@ nav {
 	*/
 }
 
+.nav-main a {
+	color: #383635;
+}
+
 .nav-main ul {
 	float: right;
 }
@@ -120,9 +166,11 @@ nav {
 	text-align: center;
 }
 
-.nav-main li:hover,
-.nav-main li:active,
+.nav-main a:hover,
+.nav-main a:active,
 .current {
+	color: #686665;
+	text-decoration: none;
 	text-shadow: 0 0 0.5em #FFAA00,
 							 0 0 1em #FFAA00,
 							 0 0 1em #FFf,
@@ -137,33 +185,26 @@ nav {
 							 0 0 2em #FFf;
 }
 
-
-/* MAIN */
-.main-content section,
-article,
-.contact-page {
+/* SIDEBAR */
+.links-box {
 	box-sizing: border-box;
+	padding: 1em;
 	margin: 1em 0;
-	padding: 1em 2em;
-}
-
-.nav-tags {
-	margin-right: 0.5em;
-	float: right;
-}
-
-.tags a, .post-snippet .tags {
-	color: #489074;
 	font-size: 0.8em;
 }
 
-.tags ul {
-	list-style: none;
+.links-box h3 {
+	padding: 0;
+	margin: 0;
 }
 
-.nav-tags li, .nav-tags ul {
-	float: right;
+.page-title {
+	text-align: left;
+	width: 100%;
 }
+
+
+
 
 
 

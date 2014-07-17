@@ -45,14 +45,14 @@ BLOG!
 {% block content %}
 
 	{% for post in post_list %}
-		<a href="{{ post.get_absolute_url }}">
 		<section>
-			<h2>{{ post.title }}
-			<span>
-				{% for tag in post.tags.names %}|{{ tag|lower }}| {% endfor %}</h2>
-			</span>
-			{{ post.pub_date }}</br>
+			<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+		<p class="sub-heading">
+			Date: {{ post.pub_date|date:'SHORT_DATE_FORMAT' }} | 
+			Categories: {% for tag in post.tags.names %}<a href=#>{{ tag }}</a> {% endfor %}
+		</p>
 			{{ post.text|safe|truncatewords_html:100 }}
+			<p class="readmore"><a href="{{ post.get_absolute_url }}">...read more &#187</a></p>
 		</section>
 	{% endfor %}
 
