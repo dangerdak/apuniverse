@@ -65,7 +65,7 @@ class Gallery(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['pub_date']
+        ordering = ['-pub_date']
         verbose_name_plural = 'galleries'
 
 
