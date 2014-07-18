@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+<!-- base_generic.html > base.html -->
+{% load taggit_extras %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block page_title %}
+BLOG!
+{% endblock page_title %}
+
+
+{% block aside %}
+<div class="links-box">
+<h3>Categories</h3>
+	<nav>
+		{% get_taglist as all_tags %}
+		<ul>
+			{% for tag in all_tags %}
+			<a href="{% url 'blogtags' tag.slug %} ">
+				<li>{{ tag }} ({{ tag.num_times }})</li>
+			</a>
+			{% endfor %}
+		</ul>
+	</nav>
+</div>
+
+
+<div class="links-box">
+<h3>Archive</h3>
+	<ul>
+		{% for year, count in archive_links %}
+		<a href="{% url "post_year_archive" year %}">
+			<li>{{ year }} ({{ count }})</li>
+		</a>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock aside %}

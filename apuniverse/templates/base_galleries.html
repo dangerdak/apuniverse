@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load taggit_extras %}
+
+
+{% block title %}Galleries{% endblock title %}
+
+
+{% block page_content %}
+<header class="section  group  gallery-header">
+	<div class="col  span_1_of_5">
+	<h1 class="page-title">
+		{% block page_title %}GALLERIES{% endblock page_title %}
+	</h1>
+	</div>
+
+
+	<aside class="col span_4_of_5">
+
+	{% block aside %}
+		<div class="links-box">
+		<nav>
+			{% get_taglist as all_galleries_tags for 'Galleries' %}
+				<ul>
+					{% for tag in all_galleries_tags %}
+					<a href="{% url 'galleriestags' tag.slug %}">
+						<li>{{ tag }} ({{ tag.num_times }})</li>
+					</a>
+					{% endfor %}
+				</ul>
+		</nav>
+		</div>
+	{% endblock aside %}
+
+	</aside>
+</header>
+
+
+<div class="main-content  col  span_5_of_5">
+
+	{% block content %}
+	{% endblock content %}
+
+</div>
+{% endblock page_content %}

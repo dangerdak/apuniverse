@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+<aside class="col  span_1_of_5">
+<h1 class="page-title">
+	{% block page_title %}{% endblock page_title %}
+</h1>
+
+	{% block aside %}
+	{% endblock aside %}
+
+</aside>
+
+
+<div class="main-content  col  span_4_of_5">
+
+	{% block content %}
+	{% endblock content %}
+
+</div>
+{% endblock page_content %}
