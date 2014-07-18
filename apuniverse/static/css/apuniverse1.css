@@ -268,7 +268,13 @@ nav {
 	transform: rotate(-1deg);*/
 }
 
-
+.caption-title {
+	font-weight: bold;
+}
+.caption-media,
+.caption-size {
+	font-size: 0.8em;
+}
 
 
 
