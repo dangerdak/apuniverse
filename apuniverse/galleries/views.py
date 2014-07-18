@@ -59,6 +59,7 @@ class GalleryListView(AjaxListView):
                 'image_list': Image.objects.filter(
                     gallery__title=instance.title),
                 'tags': instance.tags,
+                'slug': instance.slug,
                 })
 
         # Add archive links to context
@@ -102,5 +103,6 @@ class GalleryListByTag(AjaxListView):
                 'image_list': Image.objects.filter(
                     gallery__title=instance.title),
                 'tags': instance.tags,
+                'slug': instance.slug,
                 })
         return context
