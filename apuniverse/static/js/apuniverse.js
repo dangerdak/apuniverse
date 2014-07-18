@@ -15,11 +15,6 @@ $('.gallery').each(function() {
 		largeImage.attr('src', url);
 		largeImage.attr('alt', alt);
 		imageTitle.text(alt);
-
-		// Clear all thumbnail borders...
-		thumbs.css('border', '');
-		// And apply border only to clicked thumbnail
-		$(this).css('border', '1px solid black');
 	});
 });
 // End of gallery-specific js
