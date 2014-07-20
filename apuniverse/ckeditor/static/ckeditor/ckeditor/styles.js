@@ -13,7 +13,12 @@
 // Otherwise it is strongly recommended to customize this file to match your
 // website requirements and design properly.
 
-CKEDITOR.stylesSet.add( 'default', [
+CKEDITOR.stylesSet.add( 
+		'myStyles', [
+			{name: 'Featured Image', type: 'widget', widget: 'image', attributes: { 'class': 'featured-image'} },
+		],
+		
+		'default', [
 	/* Block Styles */
 
 	// These styles are already available in the "Format" combo ("format" plugin),

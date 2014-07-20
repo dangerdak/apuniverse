@@ -23,4 +23,9 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ['tags', 'status']
     search_fields = ['title', 'text']
 
+    class Media:
+        js = (
+            'js/featuredimage.js',
+            )
+
 admin.site.register(Post, PostAdmin)

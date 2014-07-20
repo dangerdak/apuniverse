@@ -8,41 +8,37 @@ CKEDITOR.editorConfig = function( config ) {
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
-		config.plugins = 'dialogui,dialog,about,a11yhelp,dialogadvtab,basicstyles,bidi,blockquote,clipboard,button,panelbutton,panel,floatpanel,colorbutton,colordialog,templates,menu,contextmenu,div,resize,toolbar,elementspath,enterkey,entities,popup,filebrowser,find,fakeobjects,flash,floatingspace,listblock,richcombo,font,forms,format,horizontalrule,htmlwriter,iframe,wysiwygarea,image,indent,indentblock,indentlist,smiley,justify,menubutton,language,link,list,liststyle,magicline,maximize,newpage,pagebreak,pastetext,pastefromword,preview,print,removeformat,save,selectall,showblocks,showborders,sourcearea,specialchar,scayt,stylescombo,tab,table,tabletools,undo,wsc,lineutils,widget,image2';
+		config.plugins = 'dialogui,dialog,a11yhelp,dialogadvtab,basicstyles,blockquote,clipboard,button,panelbutton,panel,floatpanel,colorbutton,colordialog,templates,menu,contextmenu,div,resize,toolbar,elementspath,enterkey,entities,popup,filebrowser,fakeobjects,floatingspace,listblock,richcombo,font,format,horizontalrule,htmlwriter,iframe,wysiwygarea,image,indent,indentblock,indentlist,justify,menubutton,language,link,list,liststyle,magicline,maximize,newpage,pagebreak,pastetext,removeformat,selectall,showborders,sourcearea,specialchar,scayt,tab,table,tabletools,undo,wsc,lineutils,widget,image2,oembed';
 
     config.skin = 'bootstrapck',
 
 	config.toolbar_Mine =
 	[
 		{ name: 'basicstyles',
-			items : [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ] },
+			items : [ 'Bold','Italic','Strike','-','RemoveFormat' ] },
+		{ name: 'paragraph',
+			items : [ 'NumberedList','BulletedList','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },
+		{ name: 'links',
+			items : [ 'Link','Unlink','Anchor' ] },
 		{ name: 'clipboard',
-			items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+			items : [ 'Cut','Copy','PasteText','-','Undo','Redo' ] },
 		{ name: 'editing',
 			items : [ 'SpellChecker', 'Scayt' ] },
     '/',
-		{ name: 'paragraph',
-			items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },
-		{ name: 'links',
-			items : [ 'Link','Unlink','Anchor' ] },
 		{ name: 'insert',
-			items : [ 'Image','Flash','Table','HorizontalRule', 'SpecialChar' ] },
-		'/',
+			items : [ 'Image','oembed','Table','HorizontalRule', 'SpecialChar' ] },
 		{ name: 'styles',
-			items : [ 'Styles','Format','Font' ] },
+			items : [ 'Format' ] },
 		{ name: 'colors',
-			items : [ 'TextColor','BGColor' ] },
+			items : [ 'TextColor' ] },
+		{ name: 'view',
+			items : [ 'Source' ] },
 		{ name: 'tools',
-			items : [ 'Source','Maximize','-','About' ] },
+			items : [ 'Maximize' ] },
 ];
 
-	// Remove some buttons provided by the standard plugins, which are
-	// not needed in the Standard(s) toolbar.
-//	config.removeButtons = 'Underline,Subscript,Superscript';
-
 	// Set the most common block elements.
-	config.format_tags = 'p;h1;h2;h3;pre';
-
-	// Simplify the dialog windows.
-//	config.removeDialogTabs = 'image:advanced;link:advanced';
+	config.format_tags = 'p;h2;h3;h4;pre';
+	
+//	config.stylesSet = 'myStyles';
 };
