@@ -1,13 +1,12 @@
-{% extends "base_blog.html" %}
-<!-- base_blog.html > base_generic.html > base.html -->
+{% extends "base.html" %}
 
+
+{% block page_title %}BLOG!{% endblock page_title %}
 
 {% block content %}
-
 	<article>
 		<h2>{{ object.title }}</h2>
 		<p>{{ object.pub_date }}</p>
 		{{ object.text|safe }}
 	</article>
-
 {% endblock content %}

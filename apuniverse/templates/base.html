@@ -1,13 +1,15 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+	<head profile="http://www.w3.org/2005/10/profile">
+		<link rel="icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
     <meta charset="utf-8">
     <title>{% block title %}{% endblock title %} | Annie Potter's Universe | Art, Craft & Teaching</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 
     <!-- Le styles -->
     <!-- This file store project specific CSS -->
@@ -79,8 +81,21 @@
 	</header>
 
 	<div class="page-content  section  group">
-		{% block page_content %}
-		{% endblock page_content %}
+		<div class="col  span_1_of_5">
+			<h1 class="page-title">
+		{% block page_title %}
+		{% endblock page_title %}
+			</h1>
+		<aside>
+		{% block aside %}
+		{% endblock aside %}
+		</aside>
+		</div>
+		
+		<div class="main-content  col  span_4_of_5">
+		{% block content %}
+		{% endblock content %}
+		</div>
 	</div>
 
     <!-- Le javascript

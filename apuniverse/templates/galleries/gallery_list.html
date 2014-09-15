@@ -1,19 +1,42 @@
-{% extends "base_generic.html" %}
-<!-- base_galleries.html > base.html -->
-{% load staticfiles %}
+{% extends "base.html" %}
 
+{% load staticfiles %}
+{% load taggit_extras %}
+
+{% block title %}Galleries{% endblock title %}
 
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/colorbox.css' %}">
 {% endblock extrahead %}
 
 
-{% block content %}
+{% block page_title %}
+	GALLERIES
+{% endblock page_title %}
 
-	<div>
-		{% include "galleries/gallery_list_page.html" %}
+
+{% block aside %}
+	<div class="links-box">
+	<nav>
+		{% get_taglist as all_galleries_tags for 'Galleries' %}
+			<ul>
+				{% for tag in all_galleries_tags %}
+				<a href="{% url 'galleriestags' tag.slug %}">
+					<li>{{ tag }} ({{ tag.num_times }})</li>
+				</a>
+				{% endfor %}
+			</ul>
+	</nav>
 	</div>
+{% endblock aside %}
+
+
+{% block content %}
+<div>
+	{% include "galleries/gallery_list_page.html" %}
+</div>
 {% endblock content %}
+
 
 {% block extrajs %}
 <script src="{% static 'js/jquery.colorbox-min.js' %}"></script>
