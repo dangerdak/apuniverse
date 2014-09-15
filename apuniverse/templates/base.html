@@ -38,33 +38,43 @@
 	<header class="section  group">
 		<div class="logo">
 			<img 
-				src="{% static 'images/apu-banner.png' %}"
+				src="{% static 'images/apu-banner-new.png' %}"
 				alt="Annie Potter's Universe">
 			</div>
 		<nav class="nav-main section  group">
 			<ul class="span_4_of_5">
-				<a href="{{ home_url }}"
-					{% if request.path == home_url %} class="current" {% endif %}>
-					<li>home</li>
-				</a>
-				<a href="{{ galleries_url }}"
-					{% if request.path == galleries_url %} class="current" {% endif %}>
-					<li>galleries</li>
-				</a>
-				<a href="{{ blog_url }}"
-					{% if request.path == blog_url %} class="current" {% endif %}>
-					<li>blog</li>
-				</a>
-				<a href="{{ about_url }}"
-					{% if request.path == about_url %} class="current" {% endif %}>
-					<li>about annie</li>
-				</a>
-				<a href="{{ contact_form_url }}"
-					{% if request.path == contact_form_url %} class="current" {% endif %}>
-					<li>contact</li>
-				</a>
+				<li>
+					<a href="{{ home_url }}"
+						{% if request.path == home_url %} class="current" {% endif %}>
+						home
+					</a>
+				</li><!--
+				--><li>
+					<a href="{{ galleries_url }}"
+						{% if request.path == galleries_url %} class="current" {% endif %}>
+						galleries
+					</a>
+				</li><!--
+				--><li>
+					<a href="{{ blog_url }}"
+						{% if request.path == blog_url %} class="current" {% endif %}>
+						blog
+					</a>
+				</li><!--
+				--><li>
+					<a href="{{ about_url }}"
+						{% if request.path == about_url %} class="current" {% endif %}>
+						about annie
+					</a>
+				</li><!--
+				--><li>
+					<a href="{{ contact_form_url }}"
+						{% if request.path == contact_form_url %} class="current" {% endif %}>
+						contact
+					</a>
+				</li>
 			</ul>
-			<a href=# class="menu-icon"><i class="icon-reorder"></i></a>
+			<a href=# id="menu-icon"><i class="icon-reorder"></i></a>
 		</nav>
 	</header>
 

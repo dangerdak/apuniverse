@@ -1,4 +1,6 @@
-.main-content img, .image, .embeddedContent {
+/* Display images etc only for first post */
+section:not(:first-child) img,
+section:not(:first-child) .image,
+section:not(:first-child) .embeddedContent {
 	display: none;
 }
-

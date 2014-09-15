@@ -22,12 +22,25 @@
 body {
 	width: 70%;
 	margin: auto;
-	background-color: #fff;
 	color: #383635;
+	/*
+	background-image: url(../images/background-no-bright.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	*/
+	background-color: #d5d5d5;
+	background-color: #f5f5f5;
+	border-left: 1px solid #d8d6d5;
+	border-right: 1px solid #d8d6d5;
+	padding: 0 1em;
+	box-shadow: 1px 1px 10px #a8a6a5;
 }
 
 a {
 	color: #009bff;
+	color: #4d71bf;
+	color: #3d65c3;
 	text-decoration: none;
 }
 
@@ -35,8 +48,22 @@ a:hover {
 	color: #00cbff;
 	text-decoration: underline;
 }
+
 a:visited {
-	color: #3040d0;
+}
+
+.thumbnails a:hover {
+	text-decoration: none;
+}
+
+.thumbnails img {
+	transition: all 0.2s;
+}
+.thumbnails img:hover {
+	color: rgba(0, 0, 0, 0.04);
+	box-shadow: 1px 1px 15px #686665,
+							1px 1px 3px #686665;
+	content: attr(data-title);
 }
 
 h1 {
@@ -46,6 +73,7 @@ h1 {
 
 h2 {
 	margin: 0;
+	font-family: 'Just Me Again Down Here', serif;
 }
 
 h2>a {
@@ -53,11 +81,9 @@ h2>a {
 }
 
 h2>a:hover {
-	color: #686665;
 }
 
 h2>a:visited {
-	color: #282645;
 }
 
 aside ul, nav ul {
@@ -66,7 +92,7 @@ aside ul, nav ul {
 	list-style: none;
 }
 
-.menu-icon {
+#menu-icon {
 	display: none;
 }
 
@@ -78,12 +104,15 @@ aside ul, nav ul {
 }
 
 hr {
-	border: 0;
 	height: 1px;
+	border: none;
+	background-color: #d8d6d5;
+	/*
 	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 	background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 	background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 	background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+	*/
 }
 
 
@@ -96,13 +125,36 @@ hr {
 \*------------------------------------*/
 
 /* MAIN */
+.page-content {
+	margin: 3em 0;
+}
+
+.main-content {
+	box-sizing: border-box;
+}
+
+.main-content section:first-child,
+article:first-child,
+.contact-page:first-child {
+	margin: 0 0 1em 0;
+
+}
 .main-content section,
 article,
 .contact-page {
-	box-sizing: border-box;
+	box-sizing: padding-box;
 	margin: 1em 0;
-	padding: 1em 2em;
-	background-color: #fff;
+	background-color: #f5f5f5;
+	/*
+	box-shadow: 0 0 5px #f5f5f5,
+							0 0 10px #f5f5f5;
+							*/
+/*
+	background-image: url(../images/section2.png);
+	background-repeat: repeat;
+	*/
+	border-radius: 4px;
+	overflow: hidden;
 }
 
 .nav-tags {
@@ -125,41 +177,35 @@ article,
 
 /* HEADER */
 .logo {
-	background-color: #fff;
 }
 
 .logo img {
 	display: block;
 	margin: 0 auto;
-	padding: 1em;
+	width: 105%;
+	height: auto;
 }
 
 nav {
+	position: relative;
+	z-index: 100;
 	margin: 0;
 }
 
 .nav-main {
-	border-top: 1px dashed #383635;
-	border-bottom: 1px dashed #383635;
 	font-family: 'Just Me Again Down Here', serif;
-	font-size: 2.4em;
-	line-height: 1em;
-	z-index: 300;
-	background-color: rgb(255, 255, 255);
+	font-size: 1.8em;
+	line-height: 0.6em;
+	margin-top: -0.5em;
+/*	background-color: rgb(255, 255, 255);
 	background-color: rgba(255, 255, 255, 0.5);
-	/*
-	background: repeating-linear-gradient(
-  to right,
-  #e6dfdf,
-  #e6dfdf 10px,
-  #fff 10px,
-  #fff 20px
-	);
 	*/
 }
 
 .nav-main a {
-	color: #383635;
+	color: #8c8885;
+	color: #d77f1a;
+	display: block;
 }
 
 .nav-main ul {
@@ -169,8 +215,20 @@ nav {
 .nav-main li {
 	box-sizing: border-box;
 	display: inline-block;
-	min-width: 15%;
 	text-align: center;
+	padding: 0;
+	margin: 0;
+	width: 23.0769230769%
+}
+
+.nav-main ul li:first-child {
+	text-align: left;
+	width: 15.3846153846%;
+}
+
+.nav-main ul li:last-child {
+	text-align: right;
+	width: 15.3846153846%
 }
 
 .nav-main a:hover,
@@ -193,11 +251,20 @@ nav {
 }
 
 /* SIDEBAR */
+aside, aside a {
+	color: #8c8885;
+	font-family: 'Just Me Again Down Here', serif;
+}
+
+aside a {
+	color: #7c7875;
+	color: #383635;
+}
+
 .links-box {
 	box-sizing: border-box;
-	padding: 1em;
-	margin: 1em 0;
-	font-size: 0.8em;
+	margin: 0.5em 0;
+	font-size: 1.5em;
 }
 
 .links-box h3 {
@@ -205,9 +272,14 @@ nav {
 	margin: 0;
 }
 
+.links-box li {
+	line-height: 1em;
+}
+
 .page-title {
 	text-align: left;
 	width: 100%;
+	padding: 0;
 	margin: 0;
 }
 
@@ -229,7 +301,9 @@ nav {
 
 .gallery {
 	min-height: 500px;
-	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	text-align: left;
 }
 
 .thumbnails {
@@ -240,37 +314,27 @@ nav {
 	text-align: left;
 }
 
-.image-detail {
-	text-align: right;
+.thumbnail {
+	margin: 0 2em 2em 0;
 }
 
-.large-image {
-	height: 300px;
-	margin-right: 0;
-	float: right;
-}
-
-.large-image img {
-	max-height: 100%;
-	max-width: 100%;
-	float: right;
-}
 .thumbnail:nth-child(even) {
-	float: left;
+	/*float: left;
 	margin: 6px;
-/*	-moz-transform: rotate(0.5deg);
+	-moz-transform: rotate(0.5deg);
 	-webkit-transform: rotate(0.5deg);*/
 }
 .thumbnail:nth-child(odd) {
-	float: left;
+	/*float: left;
 	margin: 3px;
-	/*-moz-transform: rotate(-1deg);
+	-moz-transform: rotate(-1deg);
 	transform: rotate(-1deg);*/
 }
 
 .caption-title {
 	font-weight: bold;
 }
+
 .caption-media,
 .caption-size {
 	font-size: 0.8em;
@@ -376,9 +440,6 @@ header {
 .main-nav li:last-child a {
 	border-right: 0;
 }
-.main-nav .menu-icon {
-	display: none;
-}
 
 @media screen and (max-width: 660px) {
 	.main-nav {
@@ -416,7 +477,7 @@ header {
 	.main-nav li {
 		width: 33.333333%;
 	}
-	.main-nav a.menu-icon {
+	#menu-icon {
 		display: block;
 		width: 100%;
 		position: relative;
