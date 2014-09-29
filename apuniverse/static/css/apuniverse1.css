@@ -22,7 +22,9 @@
 body {
 	width: 70%;
 	margin: auto;
-	color: #383635;
+	color: #484645;
+	font-size: 1.5em;
+	font-family: 'Crimson text';
 	/*
 	background-image: url(../images/background-no-bright.jpg);
 	background-repeat: no-repeat;
@@ -31,16 +33,22 @@ body {
 	*/
 	background-color: #d5d5d5;
 	background-color: #f5f5f5;
+	background-color: #fff;
+	/*
 	border-left: 1px solid #d8d6d5;
 	border-right: 1px solid #d8d6d5;
 	padding: 0 1em;
+	-moz-box-shadow: 1px 1px 10px #a8a6a5;
+	-webkit-box-shadow: 1px 1px 10px #a8a6a5;
 	box-shadow: 1px 1px 10px #a8a6a5;
+	*/
 }
 
 a {
 	color: #009bff;
 	color: #4d71bf;
 	color: #3d65c3;
+	color: #d77f1a;
 	text-decoration: none;
 }
 
@@ -61,6 +69,10 @@ a:visited {
 }
 .thumbnails img:hover {
 	color: rgba(0, 0, 0, 0.04);
+	-moz-box-shadow: 1px 1px 15px #686665,
+							1px 1px 3px #686665;
+	-webkit-box-shadow: 1px 1px 15px #686665,
+							1px 1px 3px #686665;
 	box-shadow: 1px 1px 15px #686665,
 							1px 1px 3px #686665;
 	content: attr(data-title);
@@ -144,7 +156,6 @@ article,
 .contact-page {
 	box-sizing: padding-box;
 	margin: 1em 0;
-	background-color: #f5f5f5;
 	/*
 	box-shadow: 0 0 5px #f5f5f5,
 							0 0 10px #f5f5f5;
@@ -194,7 +205,7 @@ nav {
 
 .nav-main {
 	font-family: 'Just Me Again Down Here', serif;
-	font-size: 1.8em;
+	font-size: 1.5em;
 	line-height: 0.6em;
 	margin-top: -0.5em;
 /*	background-color: rgb(255, 255, 255);
@@ -254,11 +265,13 @@ nav {
 aside, aside a {
 	color: #8c8885;
 	font-family: 'Just Me Again Down Here', serif;
+	font-size: 0.8em;
 }
 
 aside a {
 	color: #7c7875;
 	color: #383635;
+	color: #d77f1a;
 }
 
 .links-box {
@@ -284,6 +297,28 @@ aside a {
 }
 
 
+
+
+
+
+
+
+
+/*------------------------------------*\
+    $BLOG
+\*------------------------------------*/
+
+.post-archive ul {
+	list-style: none;
+}
+
+.read-more {
+	clear: both;
+}
+
+img, .embeddedContent {
+	margin: 1em;
+}
 
 
 
@@ -376,6 +411,10 @@ input:not([type=submit]), textarea {
 }
 
 input:focus, textarea:focus {
+	-moz-box-shadow: inset 0 0 5px #FFf,
+							0 0 5px #989695;
+	-webkit-box-shadow: inset 0 0 5px #FFf,
+							0 0 5px #989695;
 	box-shadow: inset 0 0 5px #FFf,
 							0 0 5px #989695;
 }
