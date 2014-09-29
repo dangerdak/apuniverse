@@ -1,20 +1,24 @@
-{% extends "base.html" %}
+{% extends "blog/base_blog.html" %}
 <!-- base_blog.html > base_generic.html > base.html -->
 
-{% block page_title %}BLOG!{% endblock page_title %}
 
 {% block content %}
 
-<div>
+<div class="post-archive">
     <h2>{{ year|date:"Y" }}</h2>
 		<ul>
 		{% for month, post_list in by_month %}
-		<li>{{ month|date:"F" }} ({{ post_list|length }})</p>
+		<li>{{ month|date:"F" }}</p>
 			<ul>
 			{% for post in post_list %}
-			<a href="{{ post.get_absolute_url }}">
-				<li>{{ post.title }}<span class="tags">{{ post.tags.names }}</span></li>
-			</a>
+				<li>
+				<a href="{{ post.get_absolute_url }}">
+					{{ post.title }}
+				</a>
+					<p class="sub-heading">
+						{% for tag in post.tags.names %} {{ tag }}{% endfor %}
+					</p>
+				</li>
 			{% endfor %}
 			</ul>
 		{% endfor %}

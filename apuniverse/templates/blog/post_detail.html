@@ -1,12 +1,10 @@
-{% extends "base.html" %}
+{% extends "blog/base_blog.html" %}
 
-
-{% block page_title %}BLOG!{% endblock page_title %}
 
 {% block content %}
 	<article>
 		<h2>{{ object.title }}</h2>
-		<p>{{ object.pub_date }}</p>
+		<p class="sub-heading">{{ object.pub_date|date:'d M Y' }}</p>
 		{{ object.text|safe }}
 	</article>
 {% endblock content %}
