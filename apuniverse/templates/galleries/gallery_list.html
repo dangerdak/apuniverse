@@ -18,6 +18,17 @@
 {% block aside %}
 	<div class="links-box">
 	<nav>
+			<ul>
+				{% for gallery in gallery_list %}
+				<a href="{% url 'galleriestags' tag.slug %}">
+					<li>{{ gallery.title }}</li>
+				</a>
+				{% endfor %}
+			</ul>
+	</nav>
+	</div>
+	<div class="links-box">
+	<nav>
 		{% get_taglist as all_galleries_tags for 'Galleries' %}
 			<ul>
 				{% for tag in all_galleries_tags %}
