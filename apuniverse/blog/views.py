@@ -75,16 +75,41 @@ class PostDetailView(DetailView):
 
 
 class PostYearArchiveView(MonthArchiveMixin, YearArchiveView):
-    model = Post
+    queryset = Post.published_objects.all()
     date_field = 'pub_date'
     make_object_list = True
     allow_empty = True
     allow_future = False
 
+    def get_context_data(self, **kwargs):
+        context = super(PostYearArchiveView, self).get_context_data(**kwargs)
+        # Add archive links to context
+        all_year_dates = self.queryset.datetimes('pub_date', 'year', 'DESC')
+        archive_links = []
+        for date in all_year_dates:
+            year = date.year
+            year_count = self.queryset.filter(pub_date__year=year).count()
+            archive_links.append((year, year_count))
+        context['archive_links'] = archive_links
+        return context
+
 
 class PostListByTag(ListView):
+    queryset = Post.published_objects.all()
     template_name = 'blog/post_list.html'
 
     def get_queryset(self):
         self.tags = get_object_or_404(Tag, name=self.kwargs['tags'].title())
         return Post.published_objects.filter(tags__name__in=[self.tags])
+
+    def get_context_data(self, **kwargs):
+        context = super(PostListByTag, self).get_context_data(**kwargs)
+        # Add archive links to context
+        all_year_dates = self.queryset.datetimes('pub_date', 'year', 'DESC')
+        archive_links = []
+        for date in all_year_dates:
+            year = date.year
+            year_count = self.queryset.filter(pub_date__year=year).count()
+            archive_links.append((year, year_count))
+        context['archive_links'] = archive_links
+        return context
