@@ -3,18 +3,15 @@
 
 {% block title %}Home{% endblock title %}
 {% block extrahead %}
-<style>
-.animation {
-	width: 100%;
-}
-</style>
+<link href="{% static 'css/home.css' %}" rel="stylesheet">
 {% endblock extrahead %}
 
 
 
 {% block home %}
 			<video autoplay class='animation' id='welcomeanimation'>
-				<source src="{% static 'doodle.mp4' %}" type='video/mp4'>
+				<source src="{% static 'doodle.ogv' %}" type='video/ogg'></source>
+				<source src="{% static 'doodle.mp4' %}" type='video/mp4'></source>
 				Your browser doesn't support video tags.
 			</video>
 {% endblock home %}

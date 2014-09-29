@@ -126,7 +126,7 @@ hr {
 
 /* MAIN */
 .page-content {
-	margin: 3em 0;
+	margin: 3em 0 0 0;
 }
 
 .main-content {
@@ -526,3 +526,4 @@ header {
 	padding: 0;
 }
 */
+
