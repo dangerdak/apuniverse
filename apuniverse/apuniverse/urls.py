@@ -25,9 +25,9 @@ urlpatterns = patterns('',
 
     # Galleries
     # App
-    url(r'^galleries/',
-        include('galleries.urls'),
-        ),
+    #url(r'^galleries/',
+    #    include('galleries.urls'),
+    #    ),
 
     # # About
     # url(r'^about/$',

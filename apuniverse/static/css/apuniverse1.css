@@ -294,6 +294,11 @@ aside a {
     $GALLERIES
 \*------------------------------------*/
 
+.gallery-link {
+	font-size: 0.7em;
+	line-height: 0.1em;
+}
+
 .gallery-header li {
 	float: right;
 	padding: 0 1em;
