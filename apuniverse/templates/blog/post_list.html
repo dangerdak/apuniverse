@@ -50,10 +50,11 @@ BLOG!
 		<section>
 			<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
 		<p class="sub-heading">
-			Date: {{ post.pub_date|date:'SHORT_DATE_FORMAT' }} | 
-			Categories: {% for tag in post.tags.names %}<a href=#>{{ tag }}</a> {% endfor %}
+			{{ post.pub_date|date:'d M Y' }} &#183
+			{% for tag in post.tags.names %}<a href=#>{{ tag }}</a> {% endfor %}
 		</p>
-			{{ post.text|safe|truncatewords_html:100 }}
+			{{ post.text|safe|truncatewords_html:20 }}
+			<div style="clear: both"></div>
 			<p class="readmore"><a href="{{ post.get_absolute_url }}">...read more &#187</a></p>
 		</section>
 		<hr>
