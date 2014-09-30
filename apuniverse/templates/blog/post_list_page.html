@@ -1,0 +1,17 @@
+{% load endless %}
+
+{% lazy_paginate 2 post_list %}
+	{% for post in post_list %}
+		<section>
+			<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+		<p class="sub-heading">
+			{{ post.pub_date|date:'d M Y' }} &#183
+			{% for tag in post.tags.names %}<a href=#>{{ tag }}</a> {% endfor %}
+		</p>
+			{{ post.text|safe|truncatewords_html:40 }}
+			<div style="clear: both"></div>
+			<p class="readmore"><a href="{{ post.get_absolute_url }}">...read more &#187</a></p>
+		</section>
+		<hr>
+	{% endfor %}
+{% show_more %}

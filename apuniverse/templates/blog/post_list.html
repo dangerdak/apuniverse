@@ -4,24 +4,13 @@
 {% load taggit_extras %}
 
 {% block extrahead %}
+<!-- Display images etc only for first post -->
 <link rel="stylesheet" href="{% static 'css/post_list.css' %}">
 {% endblock extrahead %}
 
 
 {% block content %}
 
-	{% for post in post_list %}
-		<section>
-			<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-		<p class="sub-heading">
-			{{ post.pub_date|date:'d M Y' }} &#183
-			{% for tag in post.tags.names %}<a href=#>{{ tag }}</a> {% endfor %}
-		</p>
-			{{ post.text|safe|truncatewords_html:40 }}
-			<div style="clear: both"></div>
-			<p class="readmore"><a href="{{ post.get_absolute_url }}">...read more &#187</a></p>
-		</section>
-		<hr>
-	{% endfor %}
+{% include "blog/post_list_page.html" %}
 
 {% endblock content %}

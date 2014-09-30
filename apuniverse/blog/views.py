@@ -1,7 +1,9 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView
 from django.views.generic.dates import YearArchiveView
 from django.shortcuts import get_object_or_404
+
 from taggit.models import Tag
+from endless_pagination.views import AjaxListView
 
 from blog.models import Post
 
@@ -42,7 +44,7 @@ class MonthArchiveMixin(object):
         return context
 
 
-class PostListView(ListView):
+class PostListView(AjaxListView):
     queryset = Post.published_objects.all()
 
     def get_context_data(self, **kwargs):
@@ -94,7 +96,7 @@ class PostYearArchiveView(MonthArchiveMixin, YearArchiveView):
         return context
 
 
-class PostListByTag(ListView):
+class PostListByTag(AjaxListView):
     queryset = Post.published_objects.all()
     template_name = 'blog/post_list.html'
 
