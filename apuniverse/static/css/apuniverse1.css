@@ -54,6 +54,7 @@ a {
 
 a:hover {
 	color: #00cbff;
+	color: #f79f3a;
 	text-decoration: underline;
 }
 
@@ -93,6 +94,7 @@ h2>a {
 }
 
 h2>a:hover {
+	color: #585655;
 }
 
 h2>a:visited {
@@ -246,6 +248,7 @@ nav {
 .nav-main a:active,
 .current {
 	color: #686665;
+	color: #f79f3a;
 	text-decoration: none;
 	text-shadow: 0 0 0.5em #FFAA00,
 							 0 0 1em #FFAA00,
