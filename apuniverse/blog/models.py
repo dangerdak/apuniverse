@@ -3,12 +3,13 @@ from datetime import timedelta
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django.db import models
-from django.template.defaultfilters import slugify
 
 from ckeditor.fields import RichTextField
 from taggit.managers import TaggableManager
 
 from blog.managers import PublishedManager
+
+from blog.slugify import unique_slugify
 
 
 class Post(models.Model):
@@ -18,7 +19,7 @@ class Post(models.Model):
     published_objects = PublishedManager()
 
     # FIELDS
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=40, unique=True)
     text = RichTextField(config_name='blog')
     tags = TaggableManager()
@@ -56,7 +57,8 @@ class Post(models.Model):
         if not self.id:
         # Newly created object, so set slug and date created
             self.date_created = timezone.now()
-            self.slug = slugify(self.title)
+            # Ensure slug is unique
+            unique_slugify(self, self.title)
 
         super(Post, self).save(*args, **kwargs)
 
