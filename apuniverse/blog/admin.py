@@ -6,7 +6,7 @@ from blog.forms import TagForm
 
 class PostAdmin(admin.ModelAdmin):
     # Changeform page
-    fields = ('title', 'status', 'text', 'tags')
+    fields = ('title', 'status', 'tags', 'text')
     radio_fields = {'status': admin.HORIZONTAL}
 #    change_form_template = 'blog/admin/change_form.html'
     form = TagForm
