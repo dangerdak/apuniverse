@@ -48,14 +48,16 @@ class Post(models.Model):
         if status == 'draft':
             self.pub_date = timezone.now() + timedelta(days=900000)
 
-        if status == 'published' and self.pub_date > timezone.now():
-        # ie if status changed from draft to published
+        # if status changed from draft to published
         # (as draft is only way pub_date can be in future)
+        if status == 'published' and self.pub_date > timezone.now():
                 self.pub_date = timezone.now()
+                # Only change slug after an edit if post was previously a draft
+                unique_slugify(self, self.title)
 
         self.last_modified = timezone.now()
         if not self.id:
-        # Newly created object, so set slug and date created
+            # Newly created object, so set slug and date created
             self.date_created = timezone.now()
             # Ensure slug is unique
             unique_slugify(self, self.title)
