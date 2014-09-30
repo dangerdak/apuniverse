@@ -17,11 +17,11 @@ BLOG!
 <div class="links-box">
 <h3>Categories</h3>
 	<nav>
-		{% get_taglist as all_tags %}
+		{% get_taglist as all_tags for 'blog'%}
 		<ul>
 			{% for tag in all_tags %}
 			<a href="{% url 'blogtags' tag.slug %} ">
-				<li>{{ tag }} ({{ tag.num_times }})</li>
+				<li>{{ tag }}</li>
 			</a>
 			{% endfor %}
 		</ul>
