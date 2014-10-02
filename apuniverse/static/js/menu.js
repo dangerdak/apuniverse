@@ -1,9 +1,9 @@
 $(function() {
-	var menuIcon = $('.menu-icon');
-	var menu = $('.main-nav ul');
+	var menuIcon = $('#menu-icon');
+	var menu = $('.nav-main ul');
 	var menuHeight = menu.height();
 
-	$(menuIcon).bind('click', function(e) {
+	$(menuIcon).bind('click touchstart', function(e) {
 		e.preventDefault();
 		menu.slideToggle();
 	});

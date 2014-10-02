@@ -391,8 +391,24 @@ input:focus, textarea:focus {
  * - Collapse navbar
  * */
 @media screen and (max-width: 640px) {
-	.nav-main ul, .logo-long {
+/*	.nav-main ul, */.logo-long {
 		display: none;
+	}
+	
+	.nav-main ul {
+		display: none;
+		position: relative;
+		top: 0.2em;
+		border: 5px solid #ffcc99;
+		text-align: right;
+	}
+
+	.nav-main li, .nav-main ul li:first-child, .nav-main ul li:last-child {
+		text-align: center;
+		width: 33.3333333333333%;
+		line-height: 1.5em;
+		border: 1px solid #d77f1a;
+		box-sizing: border-box;
 	}
 
 	#menu-icon, .logo-short {
@@ -410,7 +426,10 @@ input:focus, textarea:focus {
 		box-sizing: border-box;
 		border-radius: 2px;
 		background-color: #ffcc99;
+		right: 0;
+		/*
 		left: 68%;
+		*/
 		bottom: 12%;
 		line-height: 1em;
 	}
@@ -422,6 +441,17 @@ input:focus, textarea:focus {
  * */
 @media screen and (max-width: 480px) {
 }
+.side-menu-icon:hover {
+	text-decoration: none;
+}
+
+.side-menu-icon i {
+	display: inline;
+	padding: 0.1em 0.2em;
+	background-color: #bababa;
+	color: #8c8885;
+}
+
 /*
 @media screen and (max-width: 660px) {
 	.main-nav {
