@@ -452,6 +452,11 @@ input:focus, textarea:focus {
 	color: #8c8885;
 }
 
+.links-box nav {
+	display: none;
+}
+
+
 /*
 @media screen and (max-width: 660px) {
 	.main-nav {

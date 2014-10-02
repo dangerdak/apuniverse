@@ -37,12 +37,14 @@ BLOG!
 		<a href=# class="side-menu-icon"><i class="fa fa-bars"></i>
 		</a>
 	</h3>
-	<ul>
+	<nav>
 		{% for year, count in archive_links %}
-		<a href="{% url "post_year_archive" year %}">
-			<li>{{ year }} ({{ count }})</li>
-		</a>
+			<ul>
+				<a href="{% url "post_year_archive" year %}">
+					<li>{{ year }} ({{ count }})</li>
+				</a>
+			</ul>
 		{% endfor %}
-	</ul>
+	</nav>
 </div>
 {% endblock aside %}

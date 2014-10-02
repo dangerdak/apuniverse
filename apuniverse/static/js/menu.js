@@ -9,8 +9,25 @@ $(function() {
 	});
 	$(window).resize(function() {
 		var w = $(window).width();
-		if(w > 600 && menu.is(':hidden')) {
+		if(w > 640 && menu.is(':hidden')) {
 			menu.removeAttr('style');
+		}
+	});
+});
+
+$(function() {
+	var menuIcons = $('.side-menu-icon');
+	var menus = $('.links-box nav');
+	var menuHeight = menus.height();
+
+	$(menuIcons).bind('click touchstart', function(e) {
+		e.preventDefault();
+		menus.slideToggle();
+	});
+	$(window).resize(function() {
+		var w = $(window).width();
+		if(w > 480 && menus.is(':hidden')) {
+			menus.removeAttr('style');
 		}
 	});
 });
