@@ -69,7 +69,7 @@ aside ul, nav ul {
 	list-style: none;
 }
 
-#menu-icon, .logo-short {
+.side-menu-icon, #menu-icon, .logo-short {
 	display: none;
 }
 
@@ -440,20 +440,25 @@ input:focus, textarea:focus {
  * - Collapse Categories and Archives
  * */
 @media screen and (max-width: 480px) {
-}
-.side-menu-icon:hover {
-	text-decoration: none;
-}
 
-.side-menu-icon i {
-	display: inline;
-	padding: 0.1em 0.2em;
-	background-color: #bababa;
-	color: #8c8885;
-}
+	.links-box nav {
+		display: none;
+	}
 
-.links-box nav {
-	display: none;
+	.side-menu-icon {
+		display: inline;
+	}
+
+	.side-menu-icon i {
+		display: inline;
+		padding: 0.1em 0.2em;
+		background-color: #bababa;
+		color: #8c8885;
+	}
+
+	.side-menu-icon:hover {
+		text-decoration: none;
+	}
 }
 
 
