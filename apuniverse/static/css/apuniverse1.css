@@ -437,9 +437,29 @@ input:focus, textarea:focus {
 }
 
 /*
- * - Collapse Categories and Archives
+ * - Reduce whitespace
+ * - Slightly decrease font-size (closer to default size)
+ * - Collapse Categories and Archives (and place on same line)
  * */
 @media screen and (max-width: 480px) {
+
+	.page-content {
+		margin: 1em 0 0 0;
+		font-size: 0.8em;
+	}
+	
+	.links-box {
+		margin: 0;
+		float: left;
+	}
+
+	.links-box:first-child {
+		padding-right: 20px;
+	}
+
+	h1 {
+		line-height: 0.8em;
+	}
 
 	.links-box nav {
 		display: none;
@@ -458,6 +478,35 @@ input:focus, textarea:focus {
 
 	.side-menu-icon:hover {
 		text-decoration: none;
+	}
+}
+
+/*
+ * - Reduce columns in main menu
+ * - Reduce font size in main menu
+ */
+@media screen and (max-width: 420px) {
+
+	.nav-main li, .nav-main ul li:first-child, .nav-main ul li:last-child {
+		width: 50%;
+		line-height: 1em;
+	}
+
+	.nav-main a {
+		font-size: 0.8em;
+	}
+
+}
+
+/*
+ * - Place Categories and Archives on separate lines
+ */
+@media screen and (max-width: 350px) {
+
+	.links-box {
+		margin: 0;
+		width: 100%;
+		float: none;
 	}
 }
 
