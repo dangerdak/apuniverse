@@ -23,10 +23,13 @@ BLOG!
 		{% get_taglist as all_tags for 'blog'%}
 		<ul>
 			{% for tag in all_tags %}
-			<a href="{% url 'blogtags' tag.slug %} ">
+			<a href="{% url 'blogtags' tag.slug %}">
 				<li>{{ tag }}</li>
 			</a>
 			{% endfor %}
+			<a href="{% url 'blog' %}">
+				<li>All</li>
+			</a>
 		</ul>
 	</nav>
 </div>
