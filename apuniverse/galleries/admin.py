@@ -9,7 +9,6 @@ from galleries.models import Gallery, Image
 
 class ImageInline(ImageCroppingMixin, admin.StackedInline):
     model = Image
-    template = 'admin/edit_inline/stacked.html'
     fieldsets = [
         (None,  {'fields': ['title', 'image', 'thumbnail']}),
         ('Detailed Info',  {'fields': ['date', 'medium', 'size'],
