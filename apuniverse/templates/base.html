@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load navtags %}
 <!DOCTYPE html>
 <html lang="en">
 	<head profile="http://www.w3.org/2005/10/profile">
@@ -32,12 +33,6 @@
   </head>
 
   <body>
-	{% url 'home' as home_url %}
-	{% url 'galleries' as galleries_url %}
-	{% url 'blog' as blog_url %}
-	{% url 'about' as about_url %}
-	{% url 'contact_form' as contact_form_url %}
-
 	<header class="section  group">
 		<div class="logo">
 			<img class="logo-long"
@@ -51,8 +46,7 @@
 		<nav class="nav-main section  group">
 			<ul class="span_4_of_5">
 				<li>
-					<a href="{{ home_url }}"
-						{% if request.path == home_url %} class="current" {% endif %}>
+					<a href="{% url 'home' %}" class="{% current '^/$' %}">
 						home
 					</a>
 				</li><!--
@@ -62,20 +56,17 @@
 					</span>
 				</li><!--
 				--><li>
-					<a href="{{ blog_url }}"
-						{% if request.path == blog_url %} class="current" {% endif %}>
+					<a href="{% url 'blog' %}" class="{% current '^/blog/' %}">
 						blog
 					</a>
 				</li><!--
 				--><li>
-					<a href="{{ about_url }}"
-						{% if request.path == about_url %} class="current" {% endif %}>
+					<a href="{% url 'about' %}" class="{% current 'about' %}">
 						about annie
 					</a>
 				</li><!--
 				--><li>
-					<a href="{{ contact_form_url }}"
-						{% if request.path == contact_form_url %} class="current" {% endif %}>
+					<a href="{% url 'contact_form' %}" class="{% current '^/contact/' %}">
 						contact
 					</a>
 				</li>
