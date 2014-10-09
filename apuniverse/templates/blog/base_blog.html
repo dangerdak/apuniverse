@@ -43,7 +43,7 @@ BLOG!
 	<nav>
 		{% for year, count in archive_links %}
 			<ul>
-				<a href="{% url "post_year_archive" year %}">
+				<a href="{% url "blogarchive" year %}">
 					<li>{{ year }} ({{ count }})</li>
 				</a>
 			</ul>

@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     # Yearly archive view
     url(r'^(?P<year>\d{4})/$',
         PostYearArchiveView.as_view(),
-        name='post_year_archive'
+        name='blogarchive'
         ),
 
     # Category view
