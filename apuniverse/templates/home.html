@@ -10,8 +10,9 @@
 
 {% block home %}
 			<video autoplay class='animation' id='welcomeanimation'>
-				<source src="{% static 'doodle.ogv' %}" type='video/ogg'></source>
+				<source src="{% static 'doodle.webm' %}" type='video/webm'></source>
 				<source src="{% static 'doodle.mp4' %}" type='video/mp4'></source>
+				<source src="{% static 'doodle.ogv' %}" type='video/ogg'></source>
 				Your browser doesn't support video tags.
 			</video>
 {% endblock home %}
