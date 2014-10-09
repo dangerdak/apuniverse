@@ -359,12 +359,12 @@ input[type=submit] {
 
 .contact-page textarea {
 	padding: 0.5em;
+}
+
+input:not([type=submit]):not([type=checkbox]), textarea {
 	width: 50%;
 	min-width: 300px;
 	max-width: 800px;
-}
-
-input:not([type=submit]), textarea {
 	box-sizing: border-box;
 	border: 1px solid #989695;
 	background-color: #e6dfdf;
@@ -379,6 +379,11 @@ input:focus, textarea:focus {
 							0 0 5px #989695;
 }
 
+.long-title {
+	font-size: 0.7em;
+	line-height: 0.7em;
+}
+
 
 
 
@@ -386,11 +391,12 @@ input:focus, textarea:focus {
 /*------------------------------------*\
     $NAVBAR
 \*------------------------------------*/
+
 /* Upto low-res tablet:
  * - Body ~fullwidth
  * - Navbar fullwidth
  * */
-@media screen and (max-width: 940px) {
+@media screen and (max-width: 955px) {
 	body {
 		width: 90%;
 	}
@@ -401,10 +407,67 @@ input:focus, textarea:focus {
 
 }
 
-/* Upto landscape phone, portrait small tablet:
+/*
+ * - Reduce whitespace
+ * - Slightly decrease font-size (closer to default size)
+ * - Collapse Categories and Archives (and place on same line)
+ * */
+@media screen and (max-width: 680px) {
+
+	.page-content {
+		margin: 1em 0 0 0;
+		font-size: 0.8em;
+	}
+	
+	.span_1_of_5 {
+		width: 100%;
+	}
+
+	.span_4_of_5 {
+		width: 100%;
+	}
+
+	.col {
+		margin: 0;
+	}
+
+	.links-box {
+		margin: 0;
+		float: left;
+	}
+
+	.links-box:first-child {
+		padding-right: 20px;
+	}
+
+	h1 {
+		line-height: 0.8em;
+	}
+
+	.links-box nav {
+		display: none;
+	}
+
+	.side-menu-icon {
+		display: inline;
+	}
+
+	.side-menu-icon i {
+		display: inline;
+		padding: 0.1em 0.2em;
+		background-color: #bababa;
+		color: #8c8885;
+	}
+
+	.side-menu-icon:hover {
+		text-decoration: none;
+	}
+}
+
+/* 
  * - Collapse navbar
  * */
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 655px) {
 /*	.nav-main ul, */.logo-long {
 		display: none;
 	}
@@ -451,55 +514,10 @@ input:focus, textarea:focus {
 }
 
 /*
- * - Reduce whitespace
- * - Slightly decrease font-size (closer to default size)
- * - Collapse Categories and Archives (and place on same line)
- * */
-@media screen and (max-width: 480px) {
-
-	.page-content {
-		margin: 1em 0 0 0;
-		font-size: 0.8em;
-	}
-	
-	.links-box {
-		margin: 0;
-		float: left;
-	}
-
-	.links-box:first-child {
-		padding-right: 20px;
-	}
-
-	h1 {
-		line-height: 0.8em;
-	}
-
-	.links-box nav {
-		display: none;
-	}
-
-	.side-menu-icon {
-		display: inline;
-	}
-
-	.side-menu-icon i {
-		display: inline;
-		padding: 0.1em 0.2em;
-		background-color: #bababa;
-		color: #8c8885;
-	}
-
-	.side-menu-icon:hover {
-		text-decoration: none;
-	}
-}
-
-/*
  * - Reduce columns in main menu
  * - Reduce font size in main menu
  */
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 435px) {
 
 	.nav-main li, .nav-main ul li:first-child, .nav-main ul li:last-child {
 		width: 50%;
@@ -515,7 +533,7 @@ input:focus, textarea:focus {
 /*
  * - Place Categories and Archives on separate lines
  */
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 365px) {
 
 	.links-box {
 		margin: 0;
