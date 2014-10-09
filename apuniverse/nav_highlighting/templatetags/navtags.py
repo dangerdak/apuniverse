@@ -1,3 +1,4 @@
+# http://stackoverflow.com/a/18772289/3652070
 import re
 
 from django import template
