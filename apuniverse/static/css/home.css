@@ -1,9 +1,11 @@
 body {
 	border: none;
 	box-shadow: none;
+	overflow-y: scroll;
 }
 
 .animation {
+/*
 	position:fixed;
 	top: 50%;
 	left: 50%;
@@ -14,4 +16,7 @@ body {
 	z-index: -1000;
 	min-width: 100%;
 	min-height: 110%;
+*/
+	box-sizing: border-box;
+	width: 100%;
 }
