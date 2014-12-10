@@ -21,7 +21,7 @@ def get_env_setting(setting):
 
 ########## HOST CONFIGURATION
 # See: https://docs.djangoproject.com/en/1.5/releases/1.5/#allowed-hosts-required-in-production
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 ########## END HOST CONFIGURATION
 
 ########## EMAIL CONFIGURATION
@@ -52,6 +52,17 @@ SERVER_EMAIL = EMAIL_HOST_USER
 
 ########## DATABASE CONFIGURATION
 DATABASES = {}
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+    'NAME': 'apudb',                      # Or path to database file if using sqlite3.
+    # The following settings are not used with sqlite3:
+    'USER': 'dak',
+    'PASSWORD': 'spiderface108',
+    'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
+    'PORT': '',                      # Set to empty string for default.
+}
+}
 ########## END DATABASE CONFIGURATION
 
 
@@ -67,5 +78,7 @@ CACHES = {
 
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-SECRET_KEY = get_env_setting('SECRET_KEY')
+# SECRET_KEY = get_env_setting('SECRET_KEY')
+with open('/etc/secret_key.txt') as f:
+    SECRET_KEY = f.read().strip()
 ########## END SECRET CONFIGURATION

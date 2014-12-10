@@ -54,3 +54,6 @@ migrations/
 
 # Fake user uploaded media
 media/
+
+# Assets
+assets/

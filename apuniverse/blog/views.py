@@ -100,8 +100,8 @@ class PostListByTag(AjaxListView):
     queryset = Post.published_objects.all()
     template_name = 'blog/post_list.html'
 
-    def get_queryset(self):
-        self.tags = get_object_or_404(Tag, name=self.kwargs['tags'].title())
+    def get_queryset(self, **kwargs):
+        self.tags = get_object_or_404(Tag, name=self.kwargs['tags'].title().replace('-', ' '))
         return Post.published_objects.filter(tags__name__in=[self.tags])
 
     def get_context_data(self, **kwargs):
